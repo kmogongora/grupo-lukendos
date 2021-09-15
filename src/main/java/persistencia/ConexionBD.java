@@ -19,11 +19,12 @@ public class ConexionBD {
     private Connection conexion;//Variable de tipo Connection
     private Statement ejecutor; // Ejecutor de las sentencias SQL
     
-    
-     public ConexionBD() {
+    //Constructor de conexion, ejecuta automaticamente el metodo conectar
+    public ConexionBD() {
         conectar();
     }
     
+    //Determina si hay conexion activa a la base de datos
     public boolean isConectado() {
         return (this.conexion != null);
     }
@@ -38,7 +39,7 @@ public class ConexionBD {
             Class.forName("com.mysql.cj.jdbc.Driver"); //Driver con el cual va a trabajar
             conexion = DriverManager.getConnection(cadenaConexion, username, password); //Crear conexion con: Cadena de conexion, usuario y contraseña de acceso a la BD
             ejecutor = conexion.createStatement();
-            ejecutor.setQueryTimeout(30);  // set timeout to 30 sec.
+            ejecutor.setQueryTimeout(30);  // Establece el tiempo de ejecucion maximo en 30s
             //System.out.println("conexión creada: "+conexion);
         }
         catch(Exception e)
@@ -47,9 +48,12 @@ public class ConexionBD {
         }
     }
     
-    //Metodo para consultar datos
-    public ResultSet ejecutarQuery(String sql)
-    {
+    /**
+     * Ejecuta una sentencia SQL de consulta
+     * @param sql la consulta SQL que se arma para consultar registros
+     * @return un resultset con los registros obtenidos por la consulta
+     */
+    public ResultSet ejecutarQuery(String sql){
         ResultSet rs = null;
         try
         {
@@ -62,13 +66,16 @@ public class ConexionBD {
         return rs;
     }
     
-    //Metodo para actualizar datos
-    public ResultSet ejecutarUpdate(String sql)
-    {
+    /**
+     * Ejecuta una sentencia SQL de inserciÃ³n
+     * @param sql la consulta SQL que se arma para insertar un registro
+     * @return un resultset con el id del registro que se inserta
+     */
+    public ResultSet ejecutarInsert(String sql) {
         ResultSet rs = null;
         try
         {
-            int cant = ejecutor.executeUpdate(sql);
+            int cant = ejecutor.executeUpdate(sql, Statement.RETURN_GENERATED_KEYS);
             if (cant > 0) {
                 rs = ejecutor.getGeneratedKeys();
             }
@@ -80,11 +87,32 @@ public class ConexionBD {
         return rs;
     }
     
-    //Metodo para cerrar la conexion
-    public void desconectar()
-    {
+    /**
+     * Ejecuta una sentencia SQL de modificaciÃ³n
+     * @param sql la consulta SQL que se arma para modificar un registro
+     * @return la cantidad de registros que se han modificado
+     */
+    public int ejecutarUpdate(String sql) {
+        int cant = 0;
+        try
+        {
+            cant = ejecutor.executeUpdate(sql);
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        return cant;
+    }
+    
+    /**
+     * Cierra la conexiÃ³n a la base de datos. Debe usarse siempre luego de ejecutar 
+     * una sentencia y obtener la informaciÃ³n requerida
+     */
+    public void desconectar() {
         try {
             conexion.close();
+            conexion = null;
         }
         catch(Exception e) {
             System.out.println(e);
