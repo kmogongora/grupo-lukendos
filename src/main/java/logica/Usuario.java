@@ -13,20 +13,20 @@ public class Usuario {
     private String documento;
     private String nombre;
     private String apellido;
-    private Genero genero;
+    private String genero;
     private Date fechaNacimiento;
     private String email;
     private String nombreUsuario;
     private String claveAcceso;
-    private boolean estadoUsuario;
-    private Rol rolUsuario;
+    private String estadoUsuario;
+    private int rolUsuario;
     
     //Constructor sin parametros
     public Usuario() {
     }
     
     //Constructor con parametros pero sin ID
-    public Usuario(String documento, String nombre, String apellido, Genero genero, Date fechaNacimiento, String email, String nombreUsuario, String claveAcceso, boolean estadoUsuario, Rol rolUsuario) {
+    public Usuario(String documento, String nombre, String apellido, String genero, Date fechaNacimiento, String email, String nombreUsuario, String claveAcceso, String estadoUsuario, int rolUsuario) {
         this.documento = documento;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -41,7 +41,7 @@ public class Usuario {
     
     
     //Constructor con parametros
-    public Usuario(int idUsuario, String documento, String nombre, String apellido, Genero genero, Date fechaNacimiento, String email, String nombreUsuario, String claveAcceso, boolean estadoUsuario, Rol rolUsuario) {
+    public Usuario(int idUsuario, String documento, String nombre, String apellido, String genero, Date fechaNacimiento, String email, String nombreUsuario, String claveAcceso, String estadoUsuario, int rolUsuario) {
         this.idUsuario = idUsuario;
         this.documento = documento;
         this.nombre = nombre;
@@ -88,11 +88,11 @@ public class Usuario {
         this.apellido = apellido;
     }
 
-    public Genero getGenero() {
+    public String getGenero() {
         return genero;
     }
 
-    public void setGenero(Genero genero) {
+    public void setGenero(String genero) {
         this.genero = genero;
     }
 
@@ -128,20 +128,20 @@ public class Usuario {
         this.claveAcceso = claveAcceso;
     }
 
-    public boolean isEstadoUsuario() {
+    public String getEstadoUsuario() {
         return estadoUsuario;
     }
 
-    public void setEstadoUsuario(boolean estadoUsuario) {
+    public void setEstadoUsuario(String estadoUsuario) {
         this.estadoUsuario = estadoUsuario;
     }
 
-    public Rol getRolUsuario() {
+    public int getRolUsuario() {
         return rolUsuario;
     }
 
-    public void setRolUsuario(Rol rolUsuario) {
+    public void setRolUsuario(int rolUsuario) {
         this.rolUsuario = rolUsuario;
     }
-    
+
 }
