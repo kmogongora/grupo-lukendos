@@ -5,6 +5,9 @@
  */
 package logica;
 
+
+import java.util.ArrayList;
+import persistencia.RegistroDAO;
 /**
  *
  * @author Andres
