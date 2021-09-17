@@ -1,5 +1,6 @@
 package persistencia;
 
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -53,8 +54,8 @@ public class RegistroDAO {
         String apellido = j.getApellido();
       
         String documento  = j.getDocumento();
-        int genero = j.getGenero();
-        date fechaNacimiento = j.getFechaNacimiento();
+        String genero = j.getGenero();
+        Date fechaNacimiento = j.getFechaNacimiento();
         String email  = j.getEmail();
         String nombreUsuario = j.getDocumento();
         String claveAcceso  = j.getClaveAcceso();
