@@ -12,7 +12,7 @@ import java.sql.Statement;
 public class ConexionBD {
     //Atributos
     private String conectorInstalado = "jdbc:mysql:"; //Conector o driver que se instalo para la conexion
-    private String host = "localhost:8889"; //Puerto de conexion
+    private String host = "localhost:3306"; //Puerto de conexion
     private String baseDatos = "cuentomislukas"; //Variable que almacena el nombre de la Base de datos para este caso se nombro "cuentomislukas"
     private String username = "root"; //Variable que almacena el nombre de usuario de acceso a la base de datos
     private String password = ""; // Variable que almacena la clave de acceso en este caso se dejo vacio 
@@ -88,7 +88,7 @@ public class ConexionBD {
     }
     
     /**
-     * Ejecuta una sentencia SQL de modificaciÃ³n
+     * Ejecuta una sentencia SQL de modificacion
      * @param sql la consulta SQL que se arma para modificar un registro
      * @return la cantidad de registros que se han modificado
      */
@@ -107,7 +107,7 @@ public class ConexionBD {
     
     /**
      * Cierra la conexiÃ³n a la base de datos. Debe usarse siempre luego de ejecutar 
-     * una sentencia y obtener la informaciÃ³n requerida
+     * una sentencia y obtener la informacion requerida
      */
     public void desconectar() {
         try {

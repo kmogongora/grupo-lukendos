@@ -9,59 +9,58 @@ import java.sql.*;
  */
 public class Usuario {
     //Atributos
-    private int idUsuario;
+    private int id;
     private String documento;
     private String nombre;
     private String apellido;
-    private String genero;
-    private Date fechaNacimiento;
+    private String fechaNacimiento; //Formato: yyyy-mm-dd
+    private int idGenero;
     private String email;
-    private String nombreUsuario;
+    private String nombreUsuario; 
     private String claveAcceso;
-    private String estadoUsuario;
-    private int rolUsuario;
-    
+    private String estado;
+    private int idRol;
+
     //Constructor sin parametros
     public Usuario() {
     }
-    
+
     //Constructor con parametros pero sin ID
-    public Usuario(String documento, String nombre, String apellido, String genero, Date fechaNacimiento, String email, String nombreUsuario, String claveAcceso, String estadoUsuario, int rolUsuario) {
+    public Usuario(String documento, String nombre, String apellido, String fechaNacimiento, int idGenero, String email, String nombreUsuario, String claveAcceso, String estado, int idRol) {
         this.documento = documento;
         this.nombre = nombre;
         this.apellido = apellido;
-        this.genero = genero;
         this.fechaNacimiento = fechaNacimiento;
+        this.idGenero = idGenero;
         this.email = email;
         this.nombreUsuario = nombreUsuario;
         this.claveAcceso = claveAcceso;
-        this.estadoUsuario = estadoUsuario;
-        this.rolUsuario = rolUsuario;
-    }
-    
-    
-    //Constructor con parametros
-    public Usuario(int idUsuario, String documento, String nombre, String apellido, String genero, Date fechaNacimiento, String email, String nombreUsuario, String claveAcceso, String estadoUsuario, int rolUsuario) {
-        this.idUsuario = idUsuario;
-        this.documento = documento;
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.genero = genero;
-        this.fechaNacimiento = fechaNacimiento;
-        this.email = email;
-        this.nombreUsuario = nombreUsuario;
-        this.claveAcceso = claveAcceso;
-        this.estadoUsuario = estadoUsuario;
-        this.rolUsuario = rolUsuario;
-    }
-    
-    //Metodos para encapsular atributos (Setters y Getters)
-    public int getIdUsuario() {
-        return idUsuario;
+        this.estado = estado;
+        this.idRol = idRol;
     }
 
-    public void setIdUsuario(int idUsuario) {
-        this.idUsuario = idUsuario;
+     //Constructor con parametros
+    public Usuario(int id, String documento, String nombre, String apellido, String fechaNacimiento, int idGenero, String email, String nombreUsuario, String claveAcceso, String estado, int idRol) {
+        this.id = id;
+        this.documento = documento;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.fechaNacimiento = fechaNacimiento;
+        this.idGenero = idGenero;
+        this.email = email;
+        this.nombreUsuario = nombreUsuario;
+        this.claveAcceso = claveAcceso;
+        this.estado = estado;
+        this.idRol = idRol;
+    }
+    
+    //Metodos para encapsular atributos. Setters y Getters.
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getDocumento() {
@@ -87,23 +86,23 @@ public class Usuario {
     public void setApellido(String apellido) {
         this.apellido = apellido;
     }
-
-    public String getGenero() {
-        return genero;
-    }
-
-    public void setGenero(String genero) {
-        this.genero = genero;
-    }
-
-    public Date getFechaNacimiento() {
+    
+    public String getFechaNacimiento() {
         return fechaNacimiento;
     }
 
-    public void setFechaNacimiento(Date fechaNacimiento) {
+    public void setFechaNacimiento(String fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
 
+    public int getIdGenero() {
+        return idGenero;
+    }
+
+    public void setIdGenero(int idGenero) {
+        this.idGenero = idGenero;
+    }
+    
     public String getEmail() {
         return email;
     }
@@ -128,20 +127,20 @@ public class Usuario {
         this.claveAcceso = claveAcceso;
     }
 
-    public String getEstadoUsuario() {
-        return estadoUsuario;
+    public String getEstado() {
+        return estado;
     }
 
-    public void setEstadoUsuario(String estadoUsuario) {
-        this.estadoUsuario = estadoUsuario;
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
-    public int getRolUsuario() {
-        return rolUsuario;
+    public int getIdRol() {
+        return idRol;
     }
 
-    public void setRolUsuario(int rolUsuario) {
-        this.rolUsuario = rolUsuario;
+    public void setIdRol(int idRol) {
+        this.idRol = idRol;
     }
 
 }
