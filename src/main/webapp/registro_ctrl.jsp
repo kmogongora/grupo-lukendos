@@ -1,7 +1,7 @@
 <%-- 
     Document   : registro_ctrl
     Created on : 19/09/2021, 1:27:17 a. m.
-    Author     : Carolina
+    Author     : Carolina Bernal
 --%>
 <%@page import="logica.Usuario"%>
 <%@page import="logica.ColeccionRegistro"%>

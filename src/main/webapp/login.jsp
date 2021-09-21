@@ -1,7 +1,7 @@
 <%-- 
     Document   : login
     Created on : 19/09/2021, 1:24:27 a. m.
-    Author     : Carolina
+    Author     : Carolina Bernal
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
