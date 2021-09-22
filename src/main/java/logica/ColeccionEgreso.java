@@ -1,9 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package logica;
+
 import java.util.ArrayList;
 import java.util.TreeMap;
 import persistencia.EgresoDAO;
@@ -12,7 +9,33 @@ import persistencia.EgresoDAO;
  * @author Andres
  */
 public class ColeccionEgreso {
-        public boolean guardarNuevoEgreso  (Egreso spend) {
+    //Atributos
+    private ArrayList<Egreso> listadoEgresos;
+    
+    public ArrayList<Egreso> getLista(){
+        return listadoEgresos;
+    }
+    
+    public String getCategoriaEgreso(int key){
+        EgresoDAO dao = new EgresoDAO();
+        TreeMap<Integer, String> listaCtegoriaEgresos = dao.cargarCategoriaEgresos();
+        String value = listaCtegoriaEgresos.get(key);
+        return value;
+    }    
+    
+    public boolean cargarEgreso(){
+        EgresoDAO dao = new EgresoDAO();
+        listadoEgresos = dao.consultarEgresos();
+        
+        if (listadoEgresos.size() > 0) {
+            return true;
+        } 
+        else {
+           return false; 
+        }
+    }
+        
+    public boolean guardarNuevoEgreso  (Egreso spend) {
         EgresoDAO dao = new EgresoDAO();
         int id = dao.guardarNuevoEgreso(spend);
         if (id > 0) {

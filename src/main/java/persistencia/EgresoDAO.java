@@ -7,6 +7,7 @@ package persistencia;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.TreeMap;
 import logica.Egreso;
 
@@ -15,9 +16,35 @@ import logica.Egreso;
  * @author Andres
  */
 public class EgresoDAO {
-        
     
-        /**
+    //Metodo que devolvera un ArrayList con los datos de los Egresos registrados
+    public ArrayList<Egreso> consultarEgresos(){
+        ArrayList<Egreso> listaEgresos = new ArrayList<>(); 
+        ConexionBD con = new ConexionBD(); 
+        con.conectar();
+        ResultSet rs = con.ejecutarQuery("SELECT id, tipoEgreso, idCategoriaEgreso, fechaEgreso, valorEgreso, descripcion, idUsuario FROM egreso"); 
+       
+        try {
+            while (rs.next()) { 
+                int id = rs.getInt("id");
+                String tipoEgreso = rs.getString("tipoEgreso");
+                int idCategoriaEgreso = rs.getInt("idCategoriaEgreso");
+                String fechaEgreso = rs.getString("fechaEgreso");
+                double valorEgreso = rs.getDouble("valorEgreso");
+                String descripcion = rs.getString("descripcion");
+                int idUsuario = rs.getInt("idUsuario");
+                
+                Egreso spend = new Egreso(id, tipoEgreso, idCategoriaEgreso, fechaEgreso, valorEgreso, descripcion, idUsuario);
+                listaEgresos.add(spend);
+            }
+            
+        } catch (SQLException ex){
+            return null;            
+        }
+        return listaEgresos;  
+    }    
+    
+    /**
      * Envía la sentencia SQL para almacenar el dato de un egreso
      * @param spend un objeto de tipo Egreso
      * @return in número indicando el id generado por la base de datos
