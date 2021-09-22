@@ -47,7 +47,7 @@ public class RegistroDAO {
     }
     
     /**
-     * Envía la sentencia SQL para almacenar el dato de un juguete
+     * Envía la sentencia SQL para almacenar el dato de un usuario
      * @param j un objeto de tipo Usuario
      * @return in número indicando el id generado por la base de datos
      */
