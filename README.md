@@ -9,5 +9,6 @@ _Es una solución integral que promueve la educación financiera en jóvenes, me
 
 
 * **Annie Carolina CM** - *Front End* - [Carolinacm7](https://github.com/Carolinacm7)
+* **Camilo Gongora N** - +dev* - [kmogongora](https://github.com/kmogongora)
 
 
