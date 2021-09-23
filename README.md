@@ -8,9 +8,9 @@ _Es una solución integral que promueve la educación financiera en jóvenes, me
 
 
 
-* **Annie Carolina CM** - *Front End/Dev* - [Carolinacm7](https://github.com/Carolinacm7)
+* **Annie Carolina CM** - *Experience Designer/Dev* - [Carolinacm7](https://github.com/Carolinacm7)
 * **Camilo Gongora N** - *Scrum Master/Dev* - [kmogongora](https://github.com/kmogongora)
-* **A.Carolina Bernal** - *DEV/DBA* - [C4r0l1n43ern4l](https://github.com/C4r0l1n43ern4l)
+* **A.Carolina Bernal** - *Business Analyst(BA)/Dev* - [C4r0l1n43ern4l](https://github.com/C4r0l1n43ern4l)
 * **Joan Peralta Collante** - *Product Owner/Dev* - [JoshAlx](https://github.com/JoshAlx) 
 
 
