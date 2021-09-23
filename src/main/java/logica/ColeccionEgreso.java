@@ -23,6 +23,13 @@ public class ColeccionEgreso {
         return value;
     }    
     
+    public TreeMap<Integer, String> getCategoriaEgresos() {
+        EgresoDAO dao = new EgresoDAO();
+        TreeMap<Integer, String> listaCategoriaEgresos = dao.cargarCategoriaEgresos();
+        return listaCategoriaEgresos;
+    }
+    
+    
     public boolean cargarEgreso(){
         EgresoDAO dao = new EgresoDAO();
         listadoEgresos = dao.consultarEgresos();

@@ -3,7 +3,8 @@
     Created on : 21/09/2021, 4:15:56 p. m.
     Author     : Carolina Bernal
 --%>
-
+<%@page import="java.util.Map"%>
+<%@page import="java.util.TreeMap"%>
 <%@page import="java.util.Locale"%>
 <%@page import="java.text.DecimalFormatSymbols"%>
 <%@page import="java.text.DecimalFormat"%>
@@ -55,6 +56,15 @@
    
     <!-- SECCIÓN DE EGRESOS-->
     <section>
+        <%
+                String accion = request.getParameter("accion");
+                int id = 0;
+                String tipoEgreso = "";
+                int idCategoriaEgreso = 0;
+                String fechaEgreso = "";
+                double valorEgreso = 0;
+                String descripcion = "";                                
+        %>
         <div class="card-body">
             <hr style="color: #0056b2;" />
             <h1>EGRESOS</h1>
@@ -72,47 +82,50 @@
                             </div>
 
                             <hr style="color: #0056b2;" />
+                            <!-- ID del Egreso-->
+                                <div class="row mb-3">
+                                    <label for="txtId" class="col-form-label col-sm-5 ">ID</label>
+                                    <input type="text" class="form-control col-sm-6" id="txtId" name="txtId" value="<%= id %>" readonly>
+                                </div>
                             <!-- Tipo de Egresos-->                     
                             <div class="row mb-3">
                                 <label for="txtTipoEgreso" class="col-form-label col-sm-5 ">* Tipo de Egreso</label>
                                     <div class="form-check col-sm-2 mt-2">
-                                        <input class="form-check-input" type="radio" name="radTipoEgreso" id="radDisponibilidad1" value="Fijo">
+                                        <input class="form-check-input" type="radio" name="radTipoEgreso" id="radDisponibilidad1" value="Fijo" <%= tipoEgreso.equals("Fijo") ? "checked" : "" %>>
                                         <label class="form-check-label" for="radTipoEgreso1">Fijo</label>
                                     </div>
                                     <div class="form-check col-sm-2 mt-2">
-                                        <input class="form-check-input" type="radio" name="radTipoEgreso" id="radDisponibilidad2" value="Variable">
+                                        <input class="form-check-input" type="radio" name="radTipoEgreso" id="radDisponibilidad2" value="Variable" <%= tipoEgreso.equals("Variable") ? "checked" : "" %>>
                                         <label class="form-check-label" for="radTipoEgreso2">Variable</label>
                                     </div>
                             </div>
                             <!-- Categoria de los Egresos-->
                             <div class="row mb-3">
                                 <label for="selCategoriaEgreso" class="col-form-label col-sm-5">* Categoria</label>
+                                <%ColeccionEgreso colection = new ColeccionEgreso();
+                                TreeMap<Integer, String> Categoria = colection.getCategoriaEgresos();
+                                %>
                                 <select class="form-control col-sm-6" id="selCategoriaEgreso" name="selCategoriaEgreso">
                                     <option selected value=""></option>
-                                    <option value="1">Arriendo</option>
-                                    <option value="2">Mercado</option>
-                                    <option value="3">Servicios</option>
-                                    <option value="4">Transportes</option>
-                                    <option value="5">Educación</option>
-                                    <option value="6">Ropa</option>
-                                    <option value="7">Viaje</option>
-                                    <option value="8">Otros</option>
+                                    <% for (Map.Entry<Integer, String> entrada : Categoria.entrySet()) { %>
+                                    <option <%= entrada.getKey()== idCategoriaEgreso ? "selected" : "" %> value="<%= entrada.getKey() %>"><%= entrada.getValue() %></option>
+                                    <% } %>
                                 </select>
                             </div>
                             <!-- Fecha del registro del Egreso-->
                             <div class="row mb-3">
                                 <label for="dtpFechaEgreso" class="col-form-label col-sm-5">* Fecha del Egreso</label>
-                                <input type="date" class="form-control col-sm-6" id="dtpFechaEgreso" name="dtpFechaEgreso">
+                                <input type="date" class="form-control col-sm-6" id="dtpFechaEgreso" name="dtpFechaEgreso" value="<%= fechaEgreso %>">
                             </div>
                             <!-- Valor del Egreso-->
                             <div class="row mb-3">
                                 <label for="txtValorEgreso" class="col-form-label col-sm-5 ">* Valor</label>
-                                <input type="text" class="form-control col-sm-6" id="txtValorEgreso" name="txtValorEgreso" value="" placeholder="Valor">
+                                <input type="text" class="form-control col-sm-6" id="txtValorEgreso" name="txtValorEgreso" value="<%= valorEgreso %>" placeholder="Valor">
                             </div>   
                             <!-- Descripción-->
                             <div class="row mb-3">
                                 <label for="txtDescripcion" class="col-form-label col-sm-5 ">Descripción</label>
-                                <input type="text" class="form-control col-sm-6" id="txtDescripcion" name="txtDescripcion" value=""placeholder="Descripción breve">
+                                <input type="text" class="form-control col-sm-6" id="txtDescripcion" name="txtDescripcion" value="<%= descripcion %>"  placeholder="Descripción breve">
                             </div>
 
                             <div class="card-footer">
@@ -157,17 +170,17 @@
                                 </tr>
                             </thead>
                             <%  DecimalFormat df = new DecimalFormat( "#,##0.00", new DecimalFormatSymbols(new Locale("pt", "BR")));
-                                ColeccionEgreso colection = new ColeccionEgreso();
-                                boolean isDate = colection.cargarEgreso();
+                                ColeccionEgreso egres = new ColeccionEgreso();
+                                boolean isDate = egres.cargarEgreso();
                             %>
                             <tbody>
                                 <% if (isDate) { %>
-                                <% for (Egreso spend : colection.getLista()) {%>
+                                <% for (Egreso spend : egres.getLista()) {%>
                                 <tr>
                                     <tr>
                                         <td scope="row"><%= spend.getId()%></td>
                                         <td class=""><%= spend.getTipoEgreso()%></td>
-                                        <td><%= colection.getCategoriaEgreso(spend.getIdCategoriaEgreso())%></td>
+                                        <td><%= egres.getCategoriaEgreso(spend.getIdCategoriaEgreso())%></td>
                                         <td><%= spend.getFechaEgreso()%></td>
                                         <td><%= spend.getDescripcion()%></td>
                                         <td><%= df.format(spend.getValorEgreso()) %></td>
