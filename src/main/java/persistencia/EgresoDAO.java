@@ -97,4 +97,30 @@ public class EgresoDAO {
         return listaCategoriaEgresos;
     }
 
+    
+     /**
+     * Envía la sentencia SQL para obtener la información del gasto total del usuario específico y estructura
+     * la respuesta en un double
+     * @param idAConsultar el id del usuario para consultar
+     * @return un double con el gasto total información cargada o null
+     */
+    public double sumaGastoTotal(int idAConsultar) {
+        idAConsultar = 1;
+        ConexionBD con = new ConexionBD();
+        String sql = "SELECT SUM(valorEgreso) GastoTotal " +
+                     "FROM cuentomislukas.egreso "+
+                     "WHERE idUsuario = "+ idAConsultar;
+        ResultSet rs = con.ejecutarQuery(sql);
+        try {
+            if (rs.next()) {
+                double gastoTotal = rs.getDouble("GastoTotal");
+            }
+        } catch (SQLException ex) {
+            con.desconectar();
+            return 0;
+        }
+        con.desconectar();
+        return 0;
+    }
+
 }

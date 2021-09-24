@@ -51,4 +51,14 @@ public class ColeccionEgreso {
             return false;
         }
     }
+    
+        /**
+     * Carga la información del gasto total de un usuario de la base de datos
+     * @return true si carga gasto, o false si no se logró cargar
+     */
+    public double cargarSumaEgresos(int idUsuario) {
+        EgresoDAO dao = new EgresoDAO();
+        double d = dao.sumaGastoTotal(idUsuario);
+        return d;
+    }
 }
