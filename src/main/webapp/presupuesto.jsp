@@ -58,6 +58,7 @@
     <!-- SECCIÓN DE EGRESOS-->
     <section>
         <%
+                double totalEgresos;
                 String accion = request.getParameter("accion");
                 int id = 0;
                 String tipoEgreso = "";
@@ -173,6 +174,8 @@
                             <%  DecimalFormat df = new DecimalFormat( "#,##0.00", new DecimalFormatSymbols(new Locale("pt", "BR")));
                                 ColeccionEgreso egres = new ColeccionEgreso();
                                 boolean isDate = egres.cargarEgreso();
+                                Double sumTotalEgreso = 0.0;
+                                sumTotalEgreso = egres.totalEgreso();
                             %>
                             <tbody>
                                 <% if (isDate) { %>
@@ -205,7 +208,7 @@
                         <!-- Total de Egresos-->
                         <div class="col-sm-3 ml-auto">
                             <label style="font-size:16px">TOTAL EGRESOS</label>
-                            <input type="text" id="txtTotalEgresos" name="txtTotalEgresos" class="form-control" value=""  readonly>
+                            <input type="text" id="txtTotalEgresos" name="txtTotalEgresos" class="form-control" value="<%= df.format(sumTotalEgreso) %>"  readonly>
                         </div>
                     </div>
                 </div>

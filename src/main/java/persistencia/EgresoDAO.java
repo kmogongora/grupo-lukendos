@@ -75,7 +75,7 @@ public class EgresoDAO {
         return id;
     }
 
-        //Metodo para cargar los diferentes tipos de Género que existen en la BD
+    //Metodo para cargar los diferentes tipos de Género que existen en la BD
     public TreeMap<Integer, String> cargarCategoriaEgresos(){
         TreeMap<Integer, String> listaCategoriaEgresos = new TreeMap<Integer, String>();
         ConexionBD con = new ConexionBD();

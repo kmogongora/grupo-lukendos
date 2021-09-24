@@ -16,6 +16,15 @@ public class ColeccionEgreso {
         return listadoEgresos;
     }
     
+   //Método para sumar los valor de los egresos en la lista
+   public double totalEgreso(){
+        double totalEgreso = 0.0;
+        for(int i=0; i < listadoEgresos.size(); i++){
+            totalEgreso = totalEgreso + listadoEgresos.get(i).getValorEgreso();
+        }
+        return totalEgreso;
+   }
+    
     public String getCategoriaEgreso(int key){
         EgresoDAO dao = new EgresoDAO();
         TreeMap<Integer, String> listaCtegoriaEgresos = dao.cargarCategoriaEgresos();
