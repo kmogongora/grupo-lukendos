@@ -30,7 +30,7 @@
         <ul class="header-menu horizontal-list">
 
             <li>
-                <a class="header-menu-tab" href="#1">INICIO</a>
+                <a class="header-menu-tab" href="#1"><span class="fas fa-home"></span>INICIO</a>
             </li>
             <li>
                 <a class="header-menu-tab" href="#2">PRESUPUESTO</a>
