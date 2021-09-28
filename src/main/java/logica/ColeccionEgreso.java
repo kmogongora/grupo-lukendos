@@ -50,15 +50,37 @@ public class ColeccionEgreso {
            return false; 
         }
     }
-        
+    
+    /**
+     * Carga la información de un solo Egreso de la base de datos
+     * @return true si carga los Egresos, o false si no se logró cargar
+     */
+    public Egreso cargarUnEgreso(int id) {
+        EgresoDAO dao = new EgresoDAO();
+        Egreso spend = dao.consultarEgresoId(id);
+        return spend;
+    }
+    
+
     public boolean guardarNuevoEgreso  (Egreso spend) {
         EgresoDAO dao = new EgresoDAO();
-        int id = dao.guardarNuevoEgreso(spend);
-        if (id > 0) {
-            return true;
+        
+        if (spend.getId() == 0) {
+            int id = dao.guardarNuevoEgreso(spend);
+            if (id > 0) {
+                return true;
+            } else {
+                return false;
+            }
         } else {
-            return false;
+        int filas = dao.guardarEgresoExistente(spend);
+            if (filas == 1) {
+                return true;
+            } else {
+                return false;
+            }
         }
+        
     }
     
         /**

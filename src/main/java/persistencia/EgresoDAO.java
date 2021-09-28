@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package persistencia;
 
 import java.sql.ResultSet;
@@ -45,6 +41,40 @@ public class EgresoDAO {
     }    
     
     /**
+     * Envía la sentencia SQL para obtener la información de 1 egreso en específico y estructura
+     * la respuesta en un objeto de tipo Egreso
+     * @param idAConsultar el id del egreso para consultar
+     * @return un objeto de tipo Egreso con la información cargada o null
+     */
+    public Egreso consultarEgresoId(int idAConsultar) {
+        Egreso spend = null;
+        ConexionBD con = new ConexionBD();
+        con.conectar();
+        String sql = "SELECT id, tipoEgreso, idCategoriaEgreso, fechaEgreso, valorEgreso, descripcion, idUsuario " +
+                     "FROM egreso "+
+                     "WHERE id = "+idAConsultar + " ";
+        ResultSet rs = con.ejecutarQuery(sql);
+        try {
+            if (rs.next()) {
+                int id = rs.getInt("id");
+                String tipoEgreso = rs.getString("tipoEgreso");
+                int idCategoriaEgreso = rs.getInt("idCategoriaEgreso");
+                String fechaEgreso = rs.getString("fechaEgreso");
+                double valorEgreso = rs.getDouble("valorEgreso");
+                String descripcion = rs.getString("descripcion");
+                int idUsuario = rs.getInt("idUsuario");
+                
+                spend = new Egreso(id, tipoEgreso, idCategoriaEgreso, fechaEgreso, valorEgreso, descripcion, idUsuario);
+            }
+        } catch (SQLException ex) {
+            con.desconectar();
+            return spend;
+        }
+        con.desconectar();
+        return spend;
+    }
+    
+    /**
      * Envía la sentencia SQL para almacenar el dato de un egreso
      * @param spend un objeto de tipo Egreso
      * @return in número indicando el id generado por la base de datos
@@ -74,6 +104,29 @@ public class EgresoDAO {
         con.desconectar();
         return id;
     }
+    
+    /**
+     * Envía la sentencia SQL para actualizar el dato de un Egreso existente
+     * @param spend un objeto de tipo Egreso
+     * @return un número indicando la cantidad de registros afectados
+     */
+    public int guardarEgresoExistente(Egreso spend) {
+        ConexionBD con = new ConexionBD();
+        con.conectar();
+        
+        int id = spend.getId();
+        String tipoEgreso = spend.getTipoEgreso();
+        int idCategoriaEgreso = spend.getIdCategoriaEgreso();
+        String fechaEgreso = spend.getFechaEgreso();
+        double valorEgreso = spend.getValorEgreso();
+        String descripcion = spend.getDescripcion();
+        int idUsuario = spend.getIdUsuario();
+        
+        String sql = "UPDATE egreso SET tipoEgreso = '" + tipoEgreso + "' , idCategoriaEgreso = " + idCategoriaEgreso + " , fechaEgreso = '" + fechaEgreso + "', valorEgreso = " + valorEgreso + ", descripcion = '" + descripcion + "', idUsuario = "+ idUsuario +" WHERE id = " + id + " ";
+        int filas = con.ejecutarUpdate(sql);
+        con.desconectar();
+        return filas;
+    }
 
     //Metodo para cargar los diferentes tipos de Género que existen en la BD
     public TreeMap<Integer, String> cargarCategoriaEgresos(){
@@ -95,6 +148,16 @@ public class EgresoDAO {
         }
         con.desconectar();
         return listaCategoriaEgresos;
+    }
+    
+    public int eliminarEgreso(int id) {
+        ConexionBD con = new ConexionBD();
+        con.conectar();
+               
+        String sql = "DELETE FROM egreso WHERE id = " + id + " ";
+        int filas = con.ejecutarUpdate(sql);
+        con.desconectar();
+        return filas;
     }
 
     
