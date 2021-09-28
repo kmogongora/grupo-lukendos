@@ -186,4 +186,41 @@ public class EgresoDAO {
         return 0;
     }
 
+        /**
+     * Envía la sentencia SQL para obtener la información de ciertos gastos mediante filtro y estructura
+     * la respuesta en una lista de tipo Egreso
+     * @param filtro el filtro para buscar datos en la lista de juguetes para consultar
+     * @return un arraylist de tipo Juguete con la información cargada
+     */
+     public ArrayList<Egreso> consultarEgresosPorFiltro(String filtroFechaDesde, String filtroFechaHasta) {
+        ArrayList<Egreso> listadoEgresos = new ArrayList<>();
+        ConexionBD con = new ConexionBD();
+        String sql = "SELECT E.id, E.tipoEgreso, C.nombre, E.fechaEgreso, E.descripcion, E.valorEgreso " +
+                     "FROM egreso E " +
+                     "JOIN categoria_egresos C ON (C.id = E.id) " +
+                     "WHERE E.fechaEgreso BETWEEN '" + filtroFechaDesde + "' " +
+                     "AND '" + filtroFechaHasta + "' ";
+        ResultSet rs = con.ejecutarQuery(sql);
+        try {
+            while (rs.next()) { 
+                int id = rs.getInt("id");
+                String tipoEgreso = rs.getString("tipoEgreso");
+                int idCategoriaEgreso = rs.getInt("idCategoriaEgreso");
+                String fechaEgreso = rs.getString("fechaEgreso");
+                double valorEgreso = rs.getDouble("valorEgreso");
+                String descripcion = rs.getString("descripcion");
+                int idUsuario = rs.getInt("idUsuario");
+                
+                Egreso spend = new Egreso(id, tipoEgreso, idCategoriaEgreso, fechaEgreso, valorEgreso, descripcion, idUsuario);
+                listadoEgresos.add(spend);               
+                
+            }
+        } catch (SQLException ex) {
+            con.desconectar();
+            return null;
+        }
+        con.desconectar();
+        return listadoEgresos;
+    }
+
 }

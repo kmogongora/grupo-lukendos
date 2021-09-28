@@ -152,15 +152,19 @@
                     <div class="d-flex col-sm-5">
                         <h1 style="color:#1f253d">Listado de Egresos</h1>
                     </div>
+                <%
+                    String filtroFechaDesde =  request.getParameter("dtpFechaDesde");
+                    String filtroFechaHasta =  request.getParameter("dtpFechaHasta");
+                %>
                     <hr style="color: #0056b2;" />
                     <!-- Sección de filtro-->
-                    <form method="GET">
+                    <form method="GET" action = "presupuesto.jsp">
                         <div class="form-group d-flex">
                             <div class="mb-3 col-sm-6 d-flex">
                                 <label for="lblFechaFiltro" class="col-form-label col-sm-2">De </label>
                                 <input type="date" class="form-control col-sm-7" id="dtpFechaDesde" name="dtpFechaDesde" >
                                 <label for="lblFehaFiltro" class="col-form-label col-sm-2"> A </label>
-                                <input type="date" class="form-control col-sm-7" id="dtpFechaHata" name="dtpFechaHasta" >
+                                <input type="date" class="form-control col-sm-7" id="dtpFechaHasta" name="dtpFechaHasta" >
                                 <label for="lblFehaFiltro" class="col-form-label col-sm-1"></label>
                                 <button type="button" class="btn btn-success"><i class="fas fa-search"></i></button>
                             </div> 
@@ -183,9 +187,11 @@
                         <%  
                             DecimalFormat df = new DecimalFormat( "#,##0.00", new DecimalFormatSymbols(new Locale("pt", "BR")));
                             ColeccionEgreso egres = new ColeccionEgreso();
+                            egres.cargarGastosPorFiltro(filtroFechaDesde, filtroFechaHasta);
                             boolean isDate = egres.cargarEgreso();
                             Double sumTotalEgreso = 0.0;
                             sumTotalEgreso = egres.totalEgreso();
+                            
                         %>
                         <tbody>
                             <% if (isDate) { %>

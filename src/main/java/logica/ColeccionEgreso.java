@@ -12,6 +12,7 @@ public class ColeccionEgreso {
     //Atributos
     private ArrayList<Egreso> listadoEgresos;
     
+    
     public ArrayList<Egreso> getLista(){
         return listadoEgresos;
     }
@@ -92,4 +93,20 @@ public class ColeccionEgreso {
         double d = dao.sumaGastoTotal(idUsuario);
         return d;
     }
+    
+        /**
+     * Carga la información de ciertos gastos de la base de datos mediante filtro
+     * @return true si carga los juguetes, o false si no se logró cargar
+     */
+    public boolean cargarGastosPorFiltro(String filtroFechaDesde, String filtroFechaHasta) {
+        EgresoDAO dao = new EgresoDAO();
+        listadoEgresos = dao.consultarEgresosPorFiltro(filtroFechaDesde,filtroFechaHasta );
+        if (listadoEgresos.size() > 0) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
 }
