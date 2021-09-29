@@ -14,8 +14,8 @@
     <!-- titulo pestaÃ±a  -->
     <title>CUIDOMISLUKAS.COM/LOGIN</title>
     <!-- aÃ±adir logo  -->
-    <link rel="icon" href="imagenes_cuida/logopequeÃ±o.jpg" type="image/jpg">
-    <link rel="stylesheet" href="EstilosLog.css">
+    <link rel="icon" href="imagenes_cuida/logopeque§o.jpg" type="image/jpg">
+    <link href="EstilosLog.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
     <div class="login-wrap">
@@ -51,7 +51,7 @@
                         <input type="submit" class="button" value="Ingresar">
                     </div>
                     <!-- logo -->
-                    <div align="center"> <img class="logo" src="imagenes_cuida/logopequeÃ±o.jpg" alt=""></div>
+                    <div align="center"> <img class="logo" src="imagenes_cuida/logopeque§o.jpg" alt=""></div>
                     <div class="hr"></div>
                     <!--  olvidaste tu ContraseÃ±a  -->
                     <div class="foot-lnk">     

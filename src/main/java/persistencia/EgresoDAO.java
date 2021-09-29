@@ -150,16 +150,16 @@ public class EgresoDAO {
         return listaCategoriaEgresos;
     }
     
-    public int eliminarEgreso(int id) {
-        ConexionBD con = new ConexionBD();
+    public boolean eliminarEgreso (int id) {
+        ConexionBD con= new ConexionBD();
         con.conectar();
-               
-        String sql = "DELETE FROM egreso WHERE id = " + id + " ";
-        int filas = con.ejecutarUpdate(sql);
-        con.desconectar();
-        return filas;
+        String sql="DELETE FROM egreso WHERE id="+id;
+        try {
+            ResultSet rs = con.ejecutarQuery(sql);
+        } catch (Exception e) {
+        }
+        return false;
     }
-
     
      /**
      * Envía la sentencia SQL para obtener la información del gasto total del usuario específico y estructura
