@@ -150,15 +150,19 @@ public class EgresoDAO {
         return listaCategoriaEgresos;
     }
     
-    public boolean eliminarEgreso (int id) {
+    /*Metodo que permite eliminar un registro de Egreso directamente en la 
+     * BD según el Id seleccionado*/
+    public int eliminarEgreso(int id) {
         ConexionBD con= new ConexionBD();
         con.conectar();
         String sql="DELETE FROM egreso WHERE id="+id;
+        int cant = 0 ;
         try {
-            ResultSet rs = con.ejecutarQuery(sql);
+            cant = con.ejecutarUpdate(sql);
         } catch (Exception e) {
+          con.desconectar();
         }
-        return false;
+        return cant;
     }
     
      /**

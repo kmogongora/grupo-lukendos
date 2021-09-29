@@ -218,8 +218,8 @@
                                 <td><%= spend.getDescripcion()%></td>
                                 <td><%= df.format(spend.getValorEgreso()) %></td>
                                 <td class="d-flex">
-                                    <a href="presupuesto.jsp?accion=editar&id=<%= spend.getId()%>"><button type="button" class="btn btn-success"><i class="fas fa-pencil-alt"></i></button>
-                                    <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+                                    <a href="presupuesto.jsp?accion=editar&id=<%= spend.getId()%>"><button type="button" class="btn btn-success"><i class="fas fa-pencil-alt"></i></button></a>
+                                    <a href="eliminacionEgreso.jsp?id=<%= spend.getId()%>"><button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button></a>
                                 </td>
                             </tr>
                             <% } %>

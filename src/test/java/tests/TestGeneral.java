@@ -100,4 +100,10 @@ public class TestGeneral {
         Assert.assertTrue(egresoDao.cargarCategoriaEgresos().size() > 0, "No se cargaron los datos de las categorias de los Egreso. ");
     }
    
+    @Test
+    public void verificarEliminacionEgreso(){
+         EgresoDAO egresoDao = new EgresoDAO();
+         int id = 8;
+         Assert.assertTrue(egresoDao.eliminarEgreso(id) == 1, "No se logró eliminar el registro del egreso indicado. ");
+    }
 }

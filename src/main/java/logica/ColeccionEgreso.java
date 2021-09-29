@@ -84,6 +84,18 @@ public class ColeccionEgreso {
         
     }
     
+    
+    public boolean eliminarEgresoExistente(int id){
+        EgresoDAO dao = new EgresoDAO();
+        int filas = dao.eliminarEgreso(id);
+            
+        if (filas == 1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
         /**
      * Carga la información del gasto total de un usuario de la base de datos
      * @return true si carga gasto, o false si no se logró cargar

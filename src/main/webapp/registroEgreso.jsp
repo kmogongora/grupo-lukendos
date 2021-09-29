@@ -32,15 +32,7 @@
             else if (accion.equals("Actualizar")){
                 id  = Integer.parseInt(request.getParameter("txtId"));
                 spend = new Egreso(id, tipoEgreso, idCategoriaEgreso, fechaEgreso, valorEgreso, descripcion, idUsuario);
-            } 
-            else if (accion.equals("Eliminar")){
-                id  = Integer.parseInt("id");
-                EgresoDAO dao = new EgresoDAO();
-                boolean eliminar = dao.eliminarEgreso(id);
-                response.sendRedirect("presupuesto.jsp");
-                
-            }
-                  
+            }                   
             
             ColeccionEgreso colection = new ColeccionEgreso();
             boolean guardado = colection.guardarNuevoEgreso(spend);
@@ -49,8 +41,7 @@
             }
             else {
                 out.println("Información de Egreso no se guardó.");
-            }
-            
+            }           
         %>
     </body>
 </html>
