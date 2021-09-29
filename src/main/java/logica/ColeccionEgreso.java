@@ -96,7 +96,7 @@ public class ColeccionEgreso {
     
         /**
      * Carga la información de ciertos gastos de la base de datos mediante filtro
-     * @return true si carga los juguetes, o false si no se logró cargar
+     * @return true si carga los Egresos, o false si no se logró cargar
      */
     public boolean cargarGastosPorFiltro(String filtroFechaDesde, String filtroFechaHasta) {
         EgresoDAO dao = new EgresoDAO();

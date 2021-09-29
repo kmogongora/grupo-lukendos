@@ -34,20 +34,20 @@
         <ul class="header-menu horizontal-list">
 
             <li>
-                <a class="header-menu-tab" href="#1"><span class="fas fa-home"></span>INICIO</a>
+                <a class="header-menu-tab" href="#1"><span class="fas fa-home"></span> INICIO</a>
             </li>
             <li>
-                <a class="header-menu-tab" href="#2">PRESUPUESTO</a>
+                <a class="header-menu-tab" href="#2"><span class="fas fa-money-check-alt"></span> PRESUPUESTO</a>
             </li>
             <li>
-                <a class="header-menu-tab" href="#3">AHORRO</a>
+                <a class="header-menu-tab" href="#3"><span class="fas fa-piggy-bank"></span> AHORRO</a>
                 <a class="header-menu-number" href="#4">5</a>
             </li>
             <li>
-                <a class="header-menu-tab" href="#5">METAS</a>
+                <a class="header-menu-tab" href="#5"><span class="fas fa-bullseye"></span> METAS</a>
             </li>
             <li>
-                <a class="header-menu-tab" href="#5">CONFIGURACIÓN</a>
+                <a class="header-menu-tab" href="#5"><span class="fas fa-user-cog"></span> CONFIGURACIÓN</a>
             </li>
         </ul>
         <div class="profile-menu">
@@ -66,13 +66,27 @@
     </div>
     
     <%
-        String accion = request.getParameter("accion");
+        String accion;
         int id = 0;
         String tipoEgreso = "";
         int idCategoriaEgreso = 0;
         String fechaEgreso = "";
-        double valorEgreso = 0;
-        String descripcion = "";   
+        double valorEgreso = 0.0;
+        String descripcion = ""; 
+        
+        if(request.getParameter("accion") == null){
+            id = 0;
+        }
+        else {
+            id = Integer.parseInt(request.getParameter("id"));
+            ColeccionEgreso  coleccion = new ColeccionEgreso();
+            Egreso spend = coleccion.cargarUnEgreso(id);
+            tipoEgreso = spend.getTipoEgreso();
+            idCategoriaEgreso = spend.getIdCategoriaEgreso();
+            fechaEgreso = spend.getFechaEgreso();
+            valorEgreso = spend.getValorEgreso();
+            descripcion = spend.getDescripcion();
+        }      
     %>
 
     <div class="d-flex">
@@ -83,18 +97,18 @@
                     <div class="card-body">
                         <!-- Titulo de la sección de registro de Egresos-->
                         <div class="form-group">
-                            <h1 for="txtTituloEgresos" style="color:#1f253d"><i class="fas fa-money-bill-wave fa-xs"></i>Registro de Egresos</h1>
+                            <h1 for="txtTituloEgresos" style="color:#1f253d"><i class="fas fa-hand-holding-usd"></i> Registro de Egresos</h1>
                         </div>
  
                         <hr style="color: #0056b2;" />
                         <!-- ID del Egreso-->
                         <div class="row mb-3">
-                            <label for="txtId" class="col-form-label col-sm-5 ">ID</label>
+                            <label for="txtId" class="col-form-label col-sm-5 "><i class="fas fa-barcode"></i> Codigo de Registro</label>
                             <input type="text" class="form-control col-sm-6" id="txtId" name="txtId" value="<%= id %>" readonly>
                         </div>
                         <!-- Tipo de Egresos-->                     
                         <div class="row mb-3">
-                            <label for="txtTipoEgreso" class="col-form-label col-sm-5 ">* Tipo de Egreso</label>
+                            <label for="txtTipoEgreso" class="col-form-label col-sm-5 "><i class="fas fa-thumbtack"></i> Tipo de Egreso</label>
                                 <div class="form-check col-sm-2 mt-2">
                                     <input class="form-check-input" type="radio" name="radTipoEgreso" id="radDisponibilidad1" value="Fijo" <%= tipoEgreso.equals("Fijo") ? "checked" : "" %>>
                                     <label class="form-check-label" for="radTipoEgreso1">Fijo</label>
@@ -106,7 +120,7 @@
                         </div>
                         <!-- Categoria de los Egresos-->
                         <div class="row mb-3">
-                            <label for="selCategoriaEgreso" class="col-form-label col-sm-5">* Categoria</label>
+                            <label for="selCategoriaEgreso" class="col-form-label col-sm-5"><i class="fas fa-list-ol"></i> Categoria</label>
                             <%ColeccionEgreso colection = new ColeccionEgreso();
                             TreeMap<Integer, String> Categoria = colection.getCategoriaEgresos();
                             %>
@@ -119,17 +133,17 @@
                         </div>
                         <!-- Fecha del registro del Egreso-->
                         <div class="row mb-3">
-                            <label for="dtpFechaEgreso" class="col-form-label col-sm-5">* Fecha del Egreso</label>
+                            <label for="dtpFechaEgreso" class="col-form-label col-sm-5"><i class="far fa-calendar-alt"></i> Fecha del Egreso</label>
                             <input type="date" class="form-control col-sm-6" id="dtpFechaEgreso" name="dtpFechaEgreso" value="<%= fechaEgreso %>" required>
                         </div>
                         <!-- Valor del Egreso-->
                         <div class="row mb-3">
-                            <label for="txtValorEgreso" class="col-form-label col-sm-5 ">* Valor</label>
+                            <label for="txtValorEgreso" class="col-form-label col-sm-5 "><i class="fas fa-dollar-sign"></i> Valor</label>
                             <input type="text" class="form-control col-sm-6" id="txtValorEgreso" name="txtValorEgreso" value="<%= valorEgreso %>" required placeholder="Valor">
                         </div>   
                         <!-- Descripción-->
                         <div class="row mb-3">
-                            <label for="txtDescripcion" class="col-form-label col-sm-5 ">Descripción</label>
+                            <label for="txtDescripcion" class="col-form-label col-sm-5 "><i class="fas fa-microphone"></i> Descripción</label>
                             <input type="text" class="form-control col-sm-6" id="txtDescripcion" name="txtDescripcion" value="<%= descripcion %>"  placeholder="Descripción breve">
                         </div>
                         <!-- Sección de botones-->
@@ -150,7 +164,7 @@
                 <div class="card-body">
                 <!-- Titulo contenedor-->
                     <div class="d-flex col-sm-5">
-                        <h1 style="color:#1f253d">Listado de Egresos</h1>
+                        <h1 style="color:#1f253d"><i class="far fa-list-alt"></i> Listado de Egresos</h1>
                     </div>
                 <%
                     String filtroFechaDesde =  request.getParameter("dtpFechaDesde");
@@ -204,7 +218,7 @@
                                 <td><%= spend.getDescripcion()%></td>
                                 <td><%= df.format(spend.getValorEgreso()) %></td>
                                 <td class="d-flex">
-                                    <button type="button" class="btn btn-success"><i class="fas fa-pencil-alt"></i></button>
+                                    <a href="presupuesto.jsp?accion=editar&id=<%= spend.getId()%>"><button type="button" class="btn btn-success"><i class="fas fa-pencil-alt"></i></button>
                                     <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
                                 </td>
                             </tr>
