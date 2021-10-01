@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="logica.ColeccionRegistro"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,7 +30,7 @@
           <!-- creacion formulario  -->
          
             <div class="login-form">
-              <form method="post" action="">
+              <form method="post" action="login_crt.jsp">
                 <div class="sign-in-htm">
                     <!-- Usuario  -->
                     <div class="group">
@@ -111,7 +112,7 @@
                         </div>
                         <!-- boton inscribirse  -->
                         <div class="group">
-                            <input type="submit" class="button" id="btnSubmit" name="btnSubmit" value="nuevo">
+                            <input type="submit" class="button" id="btnSubmit" onclick="login()" name="btnSubmit" value="nuevo">
                         </div>
                         
                         <!-- linea separadora -->
@@ -124,6 +125,6 @@
                 </form>    
             </div>
         </div>
-    </div>   
+    </div>
 </body>
 </html>

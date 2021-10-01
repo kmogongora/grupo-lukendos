@@ -1,12 +1,9 @@
 package persistencia;
 
-import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.TreeMap;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import logica.Usuario;
 
 
@@ -34,6 +31,36 @@ public class RegistroDAO {
                 String email = rs.getString("email");
                 String nombreUsuario = rs.getString("nombreUsuario");
                 String claveAcceso = rs.getString("claveAcceso");
+                String estado = rs.getString("estado");
+                int idRol = rs.getInt("idRol");
+                Usuario user = new Usuario(id, documento, nombre, apellido, fechaNacimiento, idGenero, email, nombreUsuario, claveAcceso, estado, idRol); //Creamos un objeto de Usuario con las variables creadas que almacenaron los datos de la BD
+                lista.add(user); //Agregamos cada registro del objeto a la lista
+            }
+            
+        } catch (SQLException ex){
+            return null;            
+        }
+        return lista; //Retornara la lista con los datos 
+    }
+    
+    //Metodo que devolvera un ArrayList con los datos de los usuarios
+    public ArrayList<Usuario> consultarUsuarioPorNombreYPass(String nombreUsuario, String claveAcceso){
+        ArrayList<Usuario> lista = new ArrayList<>(); //Instanciamos un objeto tipo ArrayList de la clase Usuario y sera vacio
+        ConexionBD con = new ConexionBD(); //Instanciamos un objeto de la Clase ConexionBD
+        con.conectar();
+        ResultSet rs = con.ejecutarQuery("SELECT * FROM usuarios WHERE "
+                + "nombre = '" + nombreUsuario +
+                "' AND claveAcceso = '" + claveAcceso + "'"); //Ejecutamos el Query es decir la consulta con los datos que requerimos        
+        //Implementar una estrutura TRY CATCH para controlar las excepciones
+        try {
+            while (rs.next()) { //Recorremos todas las filas de registros en cada una de sus columnas
+                int id = rs.getInt("id");
+                String documento = rs.getString("documento");
+                String nombre = rs.getString("nombre");
+                String apellido = rs.getString("apellido");
+                String fechaNacimiento = rs.getString("fechaNacimiento");
+                int idGenero = rs.getInt("idGenero");
+                String email = rs.getString("email");
                 String estado = rs.getString("estado");
                 int idRol = rs.getInt("idRol");
                 Usuario user = new Usuario(id, documento, nombre, apellido, fechaNacimiento, idGenero, email, nombreUsuario, claveAcceso, estado, idRol); //Creamos un objeto de Usuario con las variables creadas que almacenaron los datos de la BD
