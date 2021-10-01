@@ -26,7 +26,7 @@ public class TestGeneral {
     }
     
     @Test
-    public void verificarCargaJuguetes() {
+    public void verificarCargaUsuarios() {
         RegistroDAO dao = new RegistroDAO();
         Assert.assertTrue(dao.consultarUsuario().size() > 0, "No se cargaron datos. ");
     }
