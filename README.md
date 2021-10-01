@@ -12,5 +12,6 @@ _Es una solución integral que promueve la educación financiera en jóvenes, me
 * **Camilo Gongora N** - *Scrum Master/Dev* - [kmogongora](https://github.com/kmogongora)
 * **A.Carolina Bernal** - *Business Analyst/Dev* - [C4r0l1n43ern4l](https://github.com/C4r0l1n43ern4l)
 * **Joan Peralta Collante** - *Product Owner/Dev* - [JoshAlx](https://github.com/JoshAlx) 
-* **Luis Felipe Berm‍udez** - *Business Analyst/Dev* - [LUIS302211](https://https://github.com/LUIS302211) 
+* **Luis Felipe Berm‍udez** - *Business Analyst/Dev* - [LUIS302211](https://https://github.com/LUIS302211)
+* **Andrés Ramírez** - *Business Analyst/Dev* - [Andresr2508](https://github.com/Andresr2508) 
 
