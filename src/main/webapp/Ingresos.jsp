@@ -26,14 +26,17 @@
     <link rel="stylesheet" href="EstilosPP.css">
 </head>
 <body>
-    <header class="block">
+     <header class="block">
         <ul class="header-menu horizontal-list">
 
             <li>
-                <a class="header-menu-tab" href="#1"><span class="fas fa-home"></span>INICIO</a>
+                <a class="header-menu-tab" href="/mavenproject4/Home.jsp"><span class="fas fa-home"></span>INICIO</a>
             </li>
             <li>
-                <a class="header-menu-tab" href="#2">PRESUPUESTO</a>
+                <a class="header-menu-tab" href="/mavenproject4/Ingresos.jsp">INGRESOS</a>
+            </li>
+               <li>
+                <a class="header-menu-tab" href="/mavenproject4/presupuesto.jsp">EGRESOS</a>
             </li>
             <li>
                 <a class="header-menu-tab" href="#3">AHORRO</a>
@@ -53,6 +56,7 @@
             </div>
         </div>
     </header>
+
     
    
     <!-- SECCIÓN DE INGRESOS-->
@@ -122,7 +126,7 @@
                             <!-- Valor del Ingreso-->
                             <div class="row mb-3">
                                 <label for="txtValorIngreso" class="col-form-label col-sm-5 ">* Valor</label>
-                                <input type="text" class="form-control col-sm-6" id="txtValorIngreso" name="txtValorIngreso" value="<%= valorIngreso %>" placeholder="Valor">
+                                <input type="text" class="form-control col-sm-6" id="txtValorIngreso" name="txtValorIngreso" value="$<%= valorIngreso %>" placeholder="Valor">
                             </div>   
                             <!-- Descripción-->
                             <div class="row mb-3">
@@ -187,7 +191,7 @@
                                         <td><%= ingres.getCategoriaIngreso(spend.getIdCategoriaIngreso())%></td>
                                         <td><%= spend.getFechaIngreso()%></td>
                                         <td><%= spend.getDescripcion()%></td>
-                                        <td><%= df.format(spend.getValorIngreso()) %></td>
+                                        <td>$<%= df.format(spend.getValorIngreso()) %></td>
                                         <td class="d-flex">
                                             <button type="button" class="btn btn-success"><i class="fas fa-pencil-alt"></i></button>
                                             <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
@@ -208,7 +212,7 @@
                         <!-- Total de Egresos-->
                         <div class="col-sm-3 ml-auto">
                             <label style="font-size:16px">TOTAL INGRESOS</label>
-                            <input type="text" id="txtTotalIngresos" name="txtTotalIngresos" class="form-control" value="<%= df.format(sumTotalIngreso) %>"  readonly>
+                            <input type="text" id="txtTotalIngresos" name="txtTotalIngresos" class="form-control" value="$<%= df.format(sumTotalIngreso) %>"  readonly>
                         </div>
                     </div>
                 </div>

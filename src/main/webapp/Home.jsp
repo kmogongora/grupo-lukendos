@@ -31,32 +31,35 @@
     <body>
         <!-- MENU -->
         <header class="block">
-            <ul class="header-menu horizontal-list">
+        <ul class="header-menu horizontal-list">
 
-                <li>
-                    <a class="header-menu-tab" href="#1"><span class="fas fa-home"></span>INICIO</a>
-                </li>
-                <li>
-                    <a class="header-menu-tab" href="#2">PRESUPUESTO</a>
-                </li>
-                <li>
-                    <a class="header-menu-tab" href="#3">AHORRO</a>
-                    <a class="header-menu-number" href="#4">5</a>
-                </li>
-                <li>
-                    <a class="header-menu-tab" href="#5">METAS</a>
-                </li>
-                <li>
-                    <a class="header-menu-tab" href="#5">CONFIGURACIÓN</a>
-                </li>
-            </ul>
-            <div class="profile-menu">
-                <p>USUARIO <a href="#26"></a></p>
-                <div class="profile-picture small-profile-picture">
-                    <img width="40px" alt="img usuario" src="imagenes_cuida/logoprot.png">
-                </div>
+            <li>
+                <a class="header-menu-tab" href="/mavenproject4/Home.jsp"><span class="fas fa-home"></span>INICIO</a>
+            </li>
+            <li>
+                <a class="header-menu-tab" href="/mavenproject4/Ingresos.jsp">INGRESOS</a>
+            </li>
+               <li>
+                <a class="header-menu-tab" href="/mavenproject4/presupuesto.jsp">EGRESOS</a>
+            </li>
+            <li>
+                <a class="header-menu-tab" href="#3">AHORRO</a>
+                <a class="header-menu-number" href="#4">5</a>
+            </li>
+            <li>
+                <a class="header-menu-tab" href="#5">METAS</a>
+            </li>
+            <li>
+                <a class="header-menu-tab" href="#5">CONFIGURACIÓN</a>
+            </li>
+        </ul>
+        <div class="profile-menu">
+            <p>USUARIO <a href="#26"></a></p>
+            <div class="profile-picture small-profile-picture">
+                <img width="40px" alt="img usuario" src="imagenes_cuida/logoprot.png">
             </div>
-        </header>
+        </div>
+    </header>
 
         <br>
 
