@@ -30,10 +30,13 @@
         <ul class="header-menu horizontal-list">
 
             <li>
-                <a class="header-menu-tab" href="#1"><span class="fas fa-home"></span>INICIO</a>
+                <a class="header-menu-tab" href="/mavenproject4/Home.jsp"><span class="fas fa-home"></span>INICIO</a>
             </li>
             <li>
-                <a class="header-menu-tab" href="#2">PRESUPUESTO</a>
+                <a class="header-menu-tab" href="/mavenproject4/Ingresos.jsp">INGRESOS</a>
+            </li>
+               <li>
+                <a class="header-menu-tab" href="/mavenproject4/presupuesto.jsp">EGRESOS</a>
             </li>
             <li>
                 <a class="header-menu-tab" href="#3">AHORRO</a>
@@ -187,7 +190,7 @@
                                         <td><%= egres.getCategoriaEgreso(spend.getIdCategoriaEgreso())%></td>
                                         <td><%= spend.getFechaEgreso()%></td>
                                         <td><%= spend.getDescripcion()%></td>
-                                        <td><%= df.format(spend.getValorEgreso()) %></td>
+                                        <td>$<%= df.format(spend.getValorEgreso()) %></td>
                                         <td class="d-flex">
                                             <button type="button" class="btn btn-success"><i class="fas fa-pencil-alt"></i></button>
                                             <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
@@ -208,7 +211,7 @@
                         <!-- Total de Egresos-->
                         <div class="col-sm-3 ml-auto">
                             <label style="font-size:16px">TOTAL EGRESOS</label>
-                            <input type="text" id="txtTotalEgresos" name="txtTotalEgresos" class="form-control" value="<%= df.format(sumTotalEgreso) %>"  readonly>
+                            <input type="text" id="txtTotalEgresos" name="txtTotalEgresos" class="form-control" value="$<%= df.format(sumTotalEgreso) %>"  readonly>
                         </div>
                     </div>
                 </div>
