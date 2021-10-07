@@ -32,6 +32,10 @@
         <!-- MENU -->
         <header class="block">
         <ul class="header-menu horizontal-list">
+              <li>
+                <a class="header-menu-tab" href=""><img class ="logo" src="imagenes_cuida/logomenu.png" width="400px" alt=""></a>
+            </li>
+            <li>
 
             <li>
                 <a class="header-menu-tab" href="/mavenproject4/Home.jsp"><span class="fas fa-home"></span>INICIO</a>
@@ -60,7 +64,9 @@
             </div>
         </div>
     </header>
-
+ <nav>
+        <img id="logo" src="imagenes_cuida/logomenu1.png" alt="LOGO PRINCIPAL" width="50%">
+    </nav>
         <br>
 
         <!--TABLE EGRESOS -->            
