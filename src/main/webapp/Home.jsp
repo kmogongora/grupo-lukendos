@@ -13,10 +13,18 @@
 <%@page import="logica.ColeccionEgreso"%>
 <%@page import="logica.Ingreso"%>
 <%@page import="logica.ColeccionIngreso"%>
+<%@page import="logica.Calendario"%>
 
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+
+<% Calendario mesActual = new Calendario();
+
+%>
+
+
+
 <html>
     <head>
         <meta charset="UTF-8">
@@ -66,19 +74,47 @@
         </header>
 
         <br>
-        <!-- Informacion Usuario -->
+        <!-- NOMBRE DE USUARIO Y MES ACTUAL-->
         <div class="d-flex">
-
             <div class="col-sm-5" >
                 <div class="row-ms-3">
                     <div class="card">
                         <div class="card-body">
                             <!-- Titulo contenedor-->
                             <div class="d-flex col-sm-10">
-                                <h1 style="color:#1f253d"><i class="fas fa-user-astronaut"></i> Pepe Bocadillo</h1>
+                                <h1 style="color:#1f253d"><i class="fas fa-user-astronaut"></i> Pepe Bocadillo</h1>                        
                             </div>
+                            <p style="color:#1f253d"> Resumen de <% out.print(mesActual.CalMes());%></p>
                             <hr style="color: #0056b2;" />
-                           
+                          
+
+                            <!--BARRAS METAS-->
+                            <h2 style="color:#1f253d">Mis metas </h2>
+                            <br>
+                            <label>Ahorro para la Vespa</label>
+                            <br>
+                            <div class="progress">
+                               <div class="progress-bar bg-success" role="progressbar" style="width: 22%" aria-valuenow="22" aria-valuemin="0" aria-valuemax="100">22%</div>
+                            </div>
+                            <br>
+                            <label>Regalo Cumple Mamá</label>
+                            <br>
+                            <div class="progress">
+                                <div class="progress-bar bg-info" role="progressbar" style="width: 86%" aria-valuenow="86" aria-valuemin="0" aria-valuemax="100">86%</div>
+                            </div>
+                            <br>
+                            <label>Viaje a Machu Picchu</label>        
+                            <br>
+                            <div class="progress">
+                                <div class="progress-bar bg-warning" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
+                            </div>
+                            <br>
+                            <label>Fondo para Emergencias</label>
+                            <br>
+                            <div class="progress">
+                                <div class="progress-bar bg-danger" role="progressbar" style="width: 93%" aria-valuenow="93" aria-valuemin="0" aria-valuemax="100">93%</div>
+                            </div>
+
 
                         </div>
                     </div>
@@ -94,13 +130,13 @@
                     <div class="card-body">
                         <!-- Titulo contenedor-->
                         <div class="d-flex col-sm-5">
-                            <h1 style="color:#1f253d"><i class="fas fa-tasks"></i> Listado de Ingresos</h1>
+                            <h1 style="color:#1fc202"><i class="fas fa-tasks"></i> Listado de Ingresos</h1>
                         </div>
                         <hr style="color: #0056b2;" />
                         <!-- Sección de filtro-->                                    
                         <form method="GET" action = "Home.jsp">
                             <div class="form-group d-flex">
-                                <div class="mb-3 col-sm-6 d-flex">
+                                <div class="mb-3 col-sm-7 d-flex">
                                     <label for="lblFechaFiltro" class="col-form-label col-sm-2">De </label>
                                     <input type="date" class="form-control col-sm-7" id="txtFechaDesde" name="txtFechaDesde" >
                                     <label for="lblFehaFiltro" class="col-form-label col-sm-2"> A </label>
@@ -162,7 +198,7 @@
                         <!-- Total de Ingresos-->
                         <div class="col-sm-3 ml-auto">
                             <label style="font-size:16px">TOTAL INGRESOS</label>
-                            <input type="text" id="txtTotalIngresos" name="txtTotalIngresos" class="form-control font-weight-bold" value="$<%= df.format(sumTotalIngreso)%>"  readonly>
+                            <input type="text" id="txtTotalIngresos" style="color:#1fc202" name="txtTotalIngresos" class="form-control font-weight-bold" value="$<%= df.format(sumTotalIngreso)%>"  readonly>
                         </div>
                     </div>
                 </div>
@@ -177,13 +213,13 @@
                 <div class="card-body">
                     <!-- Titulo contenedor-->
                     <div class="d-flex col-sm-5">
-                        <h1 style="color:#1f253d"><i class="far fa-list-alt"></i> Listado de Egresos</h1>
+                        <h1 style="color:#bd0202"><i class="far fa-list-alt"></i> Listado de Egresos</h1>
                     </div>
                     <hr style="color: #0056b2;" />
                     <!-- Sección de filtro-->                                    
                     <form method="GET" action = "Home.jsp">
                         <div class="form-group d-flex">
-                            <div class="mb-3 col-sm-6 d-flex">
+                            <div class="mb-3 col-sm-7 d-flex">
                                 <label for="lblFechaFiltro" class="col-form-label col-sm-2">De </label>
                                 <input type="date" class="form-control col-sm-7" id="dtpFechaDesde" name="dtpFechaDesde" >
                                 <label for="lblFehaFiltro" class="col-form-label col-sm-2"> A </label>
@@ -242,8 +278,8 @@
                 <div class="card-footer d-flex">
                     <!-- Total de Egresos-->
                     <div class="col-sm-3 ml-auto">
-                        <label style="font-size:16px">TOTAL EGRESOS</label>
-                        <input type="text" id="txtTotalEgresos" name="txtTotalEgresos" class="form-control font-weight-bold" value="$<%= df.format(sumTotalEgreso)%>"  readonly>
+                        <label style="font-size:16px" >TOTAL EGRESOS</label>
+                        <input type="text" id="txtTotalEgresos" name="txtTotalEgresos" style="color:#bd0202" class="form-control font-weight-bold" value="$<%= df.format(sumTotalEgreso)%>"  readonly>
 
                     </div>
                 </div>
@@ -256,18 +292,33 @@
                 <div class="card-body">
                     <!-- Titulo contenedor-->
                     <div class="d-flex col-sm-5">
-                        <h1 style="color:#1f253d"><i class="fas fa-money-check-alt"></i> Dinero Disponible </h1>
+                        <h1 style="color:#1222a1"><i class="fas fa-money-check-alt"></i> Dinero Disponible </h1>
                     </div>
                     <hr style="color: #0056b2;" />
 
                     <table class="table" table-hover >
-                        <input type="text" id="txtDiferencia" name="txtDiferencia" class="form-control font-weight-bold" value="$<%= df.format(sumTotalIngreso - sumTotalEgreso)%>"  readonly>
+                        <input type="text" id="txtDiferencia" name="txtDiferencia" style="color:#1222a1" class="form-control font-weight-bold" value="$<%= df.format(sumTotalIngreso - sumTotalEgreso)%>"  readonly>
+                        <br>
+                        <!--BARRAS COMPARATIVAS INGRESOS VS EGRESOS-->
+
+                        <% DecimalFormat E_B_F= new DecimalFormat("##.#");
+                            double egresoBarra = (sumTotalEgreso * 100) / sumTotalIngreso;%>
+                        <% //out.print(egresoBarra); %>
+                        <div class="progress">
+                            <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">INGRESOS</div>
                         </div>
-                        <td>
-                    </table>
+                        <br>
+                        <div class="progress">
+                            <div class="progress-bar bg-danger" role="progressbar" style="width: <% out.print(egresoBarra); %>%" aria-valuenow="<%out.print(egresoBarra); %>" aria-valuemin="0" aria-valuemax="100">EGRESOS <% out.print(E_B_F.format(egresoBarra)); %>%</div>
+                        </div>
+
+
                 </div>
+                <td>
+                    </table>
             </div>
-        </div>                
+        </div>
+    </div>                
 
 
 
@@ -276,5 +327,5 @@
 
 
 
-    </body>
+</body>
 </html>
