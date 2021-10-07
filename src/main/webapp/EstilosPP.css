@@ -178,7 +178,7 @@ h1, h2, p, a{
 		width: 300px;
 	}
 		.block {
-			margin-bottom: 25px;
-			background: rgba(40, 87, 101, 0.9);
-			border-radius: 5px;
+			margin-bottom: 16px;
+			background: rgba(75, 171, 200, 0.9);
+			border-radius: 0px;
 		}
