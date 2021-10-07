@@ -6,6 +6,7 @@
 package test;
 
 import org.testng.Assert;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 import persistencia.ConexionBD;
 import persistencia.RegistroDAO;
@@ -14,7 +15,7 @@ import persistencia.RegistroDAO;
  *
  * @author Cielo Juliana
  */
-
+//@Ignore
 public class TestGeneral {
     
     @Test
