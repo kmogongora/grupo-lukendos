@@ -82,7 +82,7 @@
                         <div class="card-body">
                             <!-- Titulo contenedor-->
                             <div class="d-flex col-sm-10">
-                                <h1 style="color:#1f253d"><i class="fas fa-user-astronaut"></i> Pepe Bocadillo</h1>                        
+                                <h1 style="color:#1f253d"><i class="fas fa-user-astronaut"></i> <u>Pepe Bocadillo</u></h1>                        
                             </div>
                             <p style="color:#1f253d"> Resumen de <% out.print(mesActual.CalMes());%></p>
                             <hr style="color: #0056b2;" />

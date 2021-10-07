@@ -70,7 +70,7 @@
     <!-- SECCIÓN DE EGRESOS-->
     <div class="card-body">
         <hr style="color: #0056b2;" />
-        <h1>EGRESOS</h1>
+        <!--h1>EGRESOS</h1>-->
     </div>
     
     <%

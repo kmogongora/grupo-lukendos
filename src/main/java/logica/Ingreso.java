@@ -5,7 +5,6 @@ package logica;
  * @author Carolina Bernal
  */
 public class Ingreso {
-
     //Atributos
     private int id;
     private String tipoIngreso;
@@ -14,11 +13,11 @@ public class Ingreso {
     private double valorIngreso;
     private String descripcion;
     private int idUsuario;
-
+    
     //Constructor sin parametros
     public Ingreso() {
     }
-
+    
     //Constructor con parametros pero sin ID
     public Ingreso(String tipoIngreso, int idCategoriaIngreso, String fechaIngreso, double valorIngreso, String descripcion, int idUsuario) {
         this.tipoIngreso = tipoIngreso;
@@ -28,7 +27,7 @@ public class Ingreso {
         this.descripcion = descripcion;
         this.idUsuario = idUsuario;
     }
-
+    
     //Constructor con parametros
     public Ingreso(int id, String tipoIngreso, int idCategoriaIngreso, String fechaIngreso, double valorIngreso, String descripcion, int idUsuario) {
         this.id = id;
@@ -41,7 +40,6 @@ public class Ingreso {
     }
 
     //Metodos para encapsular atributos. Setters y Getters
-
     public int getId() {
         return id;
     }
@@ -97,5 +95,6 @@ public class Ingreso {
     public void setIdUsuario(int idUsuario) {
         this.idUsuario = idUsuario;
     }
-   
+
+    
 }

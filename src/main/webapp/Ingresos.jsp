@@ -70,7 +70,7 @@
     <!-- SECCIÓN DE EGRESOS-->
     <div class="card-body">
         <hr style="color: #0056b2;" />
-        <h1>INGRESOS</h1>
+        <!--<h1>INGRESOS</h1>-->
     </div>
     
     <%
@@ -248,7 +248,7 @@
                     <div class="card-footer d-flex">
                         <!-- Total de Ingresos-->
                         <div class="col-sm-3 ml-auto">
-                            <label style="font-size:16px">TOTAL EGRESOS</label>
+                            <label style="font-size:16px">TOTAL INGRESOS</label>
                             <input type="text" id="txtTotalIngresos" name="txtTotalIngresos" class="form-control font-weight-bold" value="$<%= df.format(sumTotalIngreso) %>"  readonly>
                         </div>
                     </div>
