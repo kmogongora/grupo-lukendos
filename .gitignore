@@ -1,2 +1,6 @@
 /target/
-/nbproject/
+/nb-configuration.xml/ 
+target/classes/persistencia/ConexionBD.class
+*.properties
+target/maven-archiver/pom.properties
+target/mavenproject4-1.0-SNAPSHOT/Login.html

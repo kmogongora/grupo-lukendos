@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="logica.ColeccionRegistro"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,8 +15,8 @@
     <!-- titulo pestaÃ±a  -->
     <title>CUIDOMISLUKAS.COM/LOGIN</title>
     <!-- aÃ±adir logo  -->
-    <link rel="icon" href="imagenes_cuida/logopequeÃ±o.jpg" type="image/jpg">
-    <link rel="stylesheet" href="EstilosLog.css">
+    <link rel="icon" href="imagenes_cuida/logopeque§o.jpg" type="image/jpg">
+    <link href="EstilosLog.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
     <div class="login-wrap">
@@ -29,17 +30,17 @@
           <!-- creacion formulario  -->
          
             <div class="login-form">
-              <form method="post" action="">
+              <form method="post" action="login_crt.jsp">
                 <div class="sign-in-htm">
                     <!-- Usuario  -->
                     <div class="group">
                         <label for="txtUser" class="label">Usuario</label>
-                        <input id="txtUser" name="txtUser" type="text" class="input">
+                        <input id="txtUser" name="txtUser" type="text" class="input" required>
                     </div>
                     <!-- ContraseÃ±a  -->
                     <div class="group">
                         <label for="txtPass" class="label">Contraseña</label>
-                        <input id="txtPass" name="txtPass" type="password" class="input" data-type="password">
+                        <input id="txtPass" name="txtPass" type="password" class="input" data-type="password" required>
                     </div>
                      <!--Mantenme registrado -->
                     <div class="group">
@@ -51,7 +52,7 @@
                         <input type="submit" class="button" value="Ingresar">
                     </div>
                     <!-- logo -->
-                    <div align="center"> <img class="logo" src="imagenes_cuida/logopequeÃ±o.jpg" alt=""></div>
+                    <div align="center"> <img class="logo" src="imagenes_cuida/logopeque§o.jpg" alt=""></div>
                     <div class="hr"></div>
                     <!--  olvidaste tu ContraseÃ±a  -->
                     <div class="foot-lnk">     
@@ -66,28 +67,28 @@
                         <!-- Documento-->
                         <div class="group">
                             <label for="txtDocumento" class="label">Documento</label>
-                            <input id="txtDocumento" name="txtDocumento" type="text" class="input">
+                            <input id="txtDocumento" name="txtDocumento" type="text" class="input" required>
                         </div>
                         <!--Nombre-->
                         <div class="group">
                             <label for="txtNombre" class="label">Nombre</label>
-                            <input id="txtNombre" name="txtNombre" type="text" class="input">
+                            <input id="txtNombre" name="txtNombre" type="text" class="input" required>
                         </div>
                         <!--Apellido-->
                         <div class="group">
                             <label for="txtApellido" class="label">Apellido</label>
-                            <input id="txtApellido" name="txtApellido" type="text" class="input">
+                            <input id="txtApellido" name="txtApellido" type="text" class="input" required>
                         </div>
                         <!--Fecha Nacimiento-->
                         <div class="group">
                         <label for="txtFechaNacimiento" class="label">Fecha de Nacimiento</label>
-                        <input id="txtFechaNacimiento" name="txtFechaNacimiento" type="date" class="input">
+                        <input id="txtFechaNacimiento" name="txtFechaNacimiento" type="date" class="input" required>
                         </div>
                         <!-- Genero -->
                         <div class="group">
                             <label for="txtGenero" class="label">Genero</label>
                             <div class="radio"> 
-                                <input type="radio" class="Genero" name="radGenero" id="radGenero1" value="1">
+                                <input type="radio" class="Genero" name="radGenero" id="radGenero1" value="1" required>
                                 <label for="radGenero1">FEMENINO</label>
                                 <input type="radio" class="Genero" name="radGenero" id="radGenero2" value="2">
                                 <label for="radGenero2">MASCULINO</label>
@@ -97,21 +98,21 @@
                         <!-- Email -->
                         <div class="group">
                           <label for="txtEmail" class="label">Correo Electronico</label>
-                          <input id="txtEmail" name="txtEmail" type="text" class="input">
+                          <input id="txtEmail" name="txtEmail" type="text" class="input" required>
                         </div>
                         <!-- Usuario -->
                         <div class="group">
                            <label for="txtUsuario" class="label">Nombre de Usuario</label>
-                           <input id="txtUsuario" name="txtUsuario" type="text" class="input">
+                           <input id="txtUsuario" name="txtUsuario" type="text" class="input" required>
                         </div>
                         <!-- Contraseña   -->
                         <div class="group">
                             <label for="txtPassword" class="label">Clave de Acceso</label>
-                            <input id="txtPassword" name="txtPassword" type="password" class="input" data-type="password">
+                            <input id="txtPassword" name="txtPassword" type="password" class="input" data-type="password" required>
                         </div>
                         <!-- boton inscribirse  -->
                         <div class="group">
-                            <input type="submit" class="button" id="btnSubmit" name="btnSubmit" value="nuevo">
+                            <input type="submit" class="button" id="btnSubmit" onclick="login()" name="btnSubmit" value="nuevo">
                         </div>
                         
                         <!-- linea separadora -->
@@ -124,6 +125,6 @@
                 </form>    
             </div>
         </div>
-    </div>   
+    </div>
 </body>
 </html>

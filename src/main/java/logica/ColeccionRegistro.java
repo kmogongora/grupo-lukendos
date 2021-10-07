@@ -50,6 +50,18 @@ public class ColeccionRegistro {
            return false; 
         }
     }
+    
+    public boolean login(String nombreUsuario, String claveAcceso){
+        RegistroDAO dao = new RegistroDAO();//Instanciamos un objeto de la clase UsuarioDAO para que él ejecute el SQL
+        listado = dao.consultarUsuarioPorNombreYPass(nombreUsuario, claveAcceso); //Ejecutamos el metodo y el DAO devuelve un ArrayList que almacenara en nuestra varible lista
+        // Creamos una sentecia que validará el tamaño de la lista y retornara un True o False dependiendo si hay o no registros
+        if (listado.size() > 0) {
+            return true;
+        } 
+        else {
+           return false; 
+        }
+    }
         /**
      * Guarda la información de un usuario capturada desde el formulario
      *
