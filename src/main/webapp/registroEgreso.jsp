@@ -1,7 +1,7 @@
 <%-- 
     Document   : registroEgreso
     Created on : 22/09/2021, 5:24:39 p. m.
-    Author     : Carolina
+    Author     : Carolina Bernal
 --%>
 
 <%@page import="persistencia.EgresoDAO"%>
@@ -16,7 +16,7 @@
     </head>
     <body>
         <%
-            int id; 
+            int id  = Integer.parseInt(request.getParameter("txtId"));
             String tipoEgreso = request.getParameter("radTipoEgreso");
             int idCategoriaEgreso = Integer.parseInt(request.getParameter("selCategoriaEgreso"));
             String fechaEgreso = request.getParameter("dtpFechaEgreso");
@@ -30,7 +30,6 @@
                 spend = new Egreso(tipoEgreso, idCategoriaEgreso, fechaEgreso, valorEgreso, descripcion, idUsuario);
             }
             else if (accion.equals("Actualizar")){
-                id  = Integer.parseInt(request.getParameter("txtId"));
                 spend = new Egreso(id, tipoEgreso, idCategoriaEgreso, fechaEgreso, valorEgreso, descripcion, idUsuario);
             }                   
             

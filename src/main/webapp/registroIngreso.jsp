@@ -30,7 +30,7 @@
 
                 boolean guardado = colection.guardarNuevoIngreso(spend);
                 if (guardado == true) {
-                    out.println("Ingreso registrado exitosamente");
+                    response.sendRedirect("Ingresos.jsp");
                     }
                 else {
                     out.println("Informacion de Ingreso no se guardo");

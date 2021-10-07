@@ -49,8 +49,15 @@ public class ColeccionIngreso {
         else {
            return false; 
         }
-    }
         
+    }
+    
+   public Ingreso cargarUnIngreso(int id) {
+        IngresoDAO dao = new IngresoDAO();
+        Ingreso spend = dao.consultarIngresoId(id);
+        return spend;
+    }
+    
     public boolean guardarNuevoIngreso  (Ingreso spend) {
         IngresoDAO dao = new IngresoDAO();
         int id = dao.guardarNuevoIngreso(spend);
@@ -69,5 +76,16 @@ public class ColeccionIngreso {
         IngresoDAO dao = new IngresoDAO();
         double d = dao.sumaIngresoTotal(idUsuario);
         return d;
+    }
+    public boolean cargarIngresosPorFiltro(String filtroFechaDesde, String filtroFechaHasta) {
+        IngresoDAO dao = new IngresoDAO();
+        listadoIngresos = dao.consultarIngresosPorFiltro(filtroFechaDesde,filtroFechaHasta );
+        if (listadoIngresos.size() > 0) {
+            return true;
+        }
+        else {
+            return false;
+        }
+      
     }
 }

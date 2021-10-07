@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package persistencia;
 
 import java.sql.ResultSet;
@@ -17,7 +13,7 @@ import logica.Ingreso;
  */
 public class IngresoDAO {
     
-    //Metodo que devolvera un ArrayList con los datos de los Egresos registrados
+    //Metodo que devolvera un ArrayList con los datos de los Ingresos registrados
     public ArrayList<Ingreso> consultarIngresos(){
         ArrayList<Ingreso> listaIngresos = new ArrayList<>(); 
         ConexionBD con = new ConexionBD(); 
@@ -45,8 +41,42 @@ public class IngresoDAO {
     }    
     
     /**
-     * Envía la sentencia SQL para almacenar el dato de un egreso
-     * @param spend un objeto de tipo Egreso
+     * Envía la sentencia SQL para obtener la información de 1 ingreso en específico y estructura
+     * la respuesta en un objeto de tipo Ingreso
+     * @param idAConsultar el id del ingreso para consultar
+     * @return un objeto de tipo Ingreso con la información cargada o null
+     */
+    public Ingreso consultarIngresoId(int idAConsultar) {
+        Ingreso spend = null;
+        ConexionBD con = new ConexionBD();
+        con.conectar();
+        String sql = "SELECT id, tipoIngreso, idCategoriaIngreso, fechaIngreso, valorIngreso, descripcion, idUsuario " +
+                     "FROM ingreso "+
+                     "WHERE id = "+idAConsultar + " ";
+        ResultSet rs = con.ejecutarQuery(sql);
+        try {
+            if (rs.next()) {
+                int id = rs.getInt("id");
+                String tipoIngreso = rs.getString("tipoIngreso");
+                int idCategoriaIngreso = rs.getInt("idCategoriaIngreso");
+                String fechaIngreso = rs.getString("fechaIngreso");
+                double valorIngreso = rs.getDouble("valorIngreso");
+                String descripcion = rs.getString("descripcion");
+                int idUsuario = rs.getInt("idUsuario");
+                
+                spend = new Ingreso(id, tipoIngreso, idCategoriaIngreso, fechaIngreso, valorIngreso, descripcion, idUsuario);
+            }
+        } catch (SQLException ex) {
+            con.desconectar();
+            return spend;
+        }
+        con.desconectar();
+        return spend;
+    }
+    
+    /**
+     * Envía la sentencia SQL para almacenar el dato de un ingreso
+     * @param spend un objeto de tipo Ingreso
      * @return in número indicando el id generado por la base de datos
      */
     public int guardarNuevoIngreso(Ingreso spend) {
@@ -59,7 +89,7 @@ public class IngresoDAO {
         String descripcion = spend.getDescripcion();
         int idUsuario = spend.getIdUsuario();
         
-        String sql = "INSERT INTO Ingreso(tipoIngreso, idCategoriaIngreso, fechaIngreso, valorIngreso, descripcion, idUsuario) VALUES ('"+tipoIngreso+"', "+idCategoriaIngreso+", '"+fechaIngreso+"', "+valorIngreso+", '"+descripcion+"', "+idUsuario+")";
+        String sql = "INSERT INTO ingreso(tipoIngreso, idCategoriaIngreso, fechaIngreso, valorIngreso, descripcion, idUsuario) VALUES ('"+tipoIngreso+"', "+idCategoriaIngreso+", '"+fechaIngreso+"', "+valorIngreso+", '"+descripcion+"', "+idUsuario+")";
         con.conectar();
         ResultSet rs = con.ejecutarInsert(sql);
         int id = 0;
@@ -73,6 +103,29 @@ public class IngresoDAO {
         }
         con.desconectar();
         return id;
+    }
+    
+    /**
+     * Envía la sentencia SQL para actualizar el dato de un Ingreso existente
+     * @param spend un objeto de tipo Ingreso
+     * @return un número indicando la cantidad de registros afectados
+     */
+    public int guardarIngresoExistente(Ingreso spend) {
+        ConexionBD con = new ConexionBD();
+        con.conectar();
+        
+        int id = spend.getId();
+        String tipoIngreso = spend.getTipoIngreso();
+        int idCategoriaIngreso = spend.getIdCategoriaIngreso();
+        String fechaIngreso = spend.getFechaIngreso();
+        double valorIngreso = spend.getValorIngreso();
+        String descripcion = spend.getDescripcion();
+        int idUsuario = spend.getIdUsuario();
+        
+        String sql = "UPDATE ingreso SET tipoIngreso = '" + tipoIngreso + "' , idCategoriaIngreso = " + idCategoriaIngreso + " , fechaIngreso = '" + fechaIngreso + "', valorIngreso = " + valorIngreso + ", descripcion = '" + descripcion + "', idUsuario = "+ idUsuario +" WHERE id = " + id + " ";
+        int filas = con.ejecutarUpdate(sql);
+        con.desconectar();
+        return filas;
     }
 
     //Metodo para cargar los diferentes tipos de Género que existen en la BD
@@ -96,7 +149,21 @@ public class IngresoDAO {
         con.desconectar();
         return listaCategoriaIngresos;
     }
-
+    
+    /*Metodo que permite eliminar un registro de Ingreso directamente en la 
+     * BD según el Id seleccionado*/
+    public int eliminarIngreso(int id) {
+        ConexionBD con= new ConexionBD();
+        con.conectar();
+        String sql="DELETE FROM ingreso WHERE id="+id;
+        int cant = 0 ;
+        try {
+            cant = con.ejecutarUpdate(sql);
+        } catch (Exception e) {
+          con.desconectar();
+        }
+        return cant;
+    }
     
      /**
      * Envía la sentencia SQL para obtener la información del gasto total del usuario específico y estructura
@@ -107,13 +174,13 @@ public class IngresoDAO {
     public double sumaIngresoTotal(int idAConsultar) {
         idAConsultar = 1;
         ConexionBD con = new ConexionBD();
-        String sql = "SELECT SUM(valorIngreso) IngresoTotal " +
+        String sql = "SELECT SUM(valorIngreso) GastoTotal " +
                      "FROM cuentomislukas.ingreso "+
                      "WHERE idUsuario = "+ idAConsultar;
         ResultSet rs = con.ejecutarQuery(sql);
         try {
             if (rs.next()) {
-                double IngresoTotal = rs.getDouble("IngresoTotal");
+                double gastoTotal = rs.getDouble("GastoTotal");
             }
         } catch (SQLException ex) {
             con.desconectar();
@@ -121,6 +188,43 @@ public class IngresoDAO {
         }
         con.desconectar();
         return 0;
+    }
+
+        /**
+     * Envía la sentencia SQL para obtener la información de ciertos gastos mediante filtro y estructura
+     * la respuesta en una lista de tipo Ingreso
+     * @param filtro el filtro para buscar datos en la lista de juguetes para consultar
+     * @return un arraylist de tipo Juguete con la información cargada
+     */
+     public ArrayList<Ingreso> consultarIngresosPorFiltro(String filtroFechaDesde, String filtroFechaHasta) {
+        ArrayList<Ingreso> listadoIngresos = new ArrayList<>();
+        ConexionBD con = new ConexionBD();
+        String sql = "SELECT E.id, E.tipoIngreso, C.nombre, E.fechaIngreso, E.descripcion, E.valorIngreso " +
+                     "FROM ingreso E " +
+                     "JOIN categoria_ingresos C ON (C.id = E.id) " +
+                     "WHERE E.fechaIngreso BETWEEN '" + filtroFechaDesde + "' " +
+                     "AND '" + filtroFechaHasta + "' ";
+        ResultSet rs = con.ejecutarQuery(sql);
+        try {
+            while (rs.next()) { 
+                int id = rs.getInt("id");
+                String tipoIngreso = rs.getString("tipoIngreso");
+                int idCategoriaIngreso = rs.getInt("idCategoriaIngreso");
+                String fechaIngreso = rs.getString("fechaIngreso");
+                double valorIngreso = rs.getDouble("valorIngreso");
+                String descripcion = rs.getString("descripcion");
+                int idUsuario = rs.getInt("idUsuario");
+                
+                Ingreso spend = new Ingreso(id, tipoIngreso, idCategoriaIngreso, fechaIngreso, valorIngreso, descripcion, idUsuario);
+                listadoIngresos.add(spend);               
+                
+            }
+        } catch (SQLException ex) {
+            con.desconectar();
+            return null;
+        }
+        con.desconectar();
+        return listadoIngresos;
     }
 
 }

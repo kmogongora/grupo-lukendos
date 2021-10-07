@@ -1,7 +1,7 @@
 <%-- 
     Document   : usuarios_lista
     Created on : 18/09/2021, 1:05:40 p. m.
-    Author     : Carolina
+    Author     : Carolina Bernal
 --%>
 <%@page import="logica.Usuario"%>
 <%@page import="logica.ColeccionRegistro"%>
