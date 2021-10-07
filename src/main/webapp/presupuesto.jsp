@@ -44,7 +44,7 @@
                 <a class="header-menu-tab" href="/mavenproject4/Ingresos.jsp"><span class="fas fa-wallet"></span> INGRESOS</a>
             </li>
                <li>
-                <a class="header-menu-tab" href="/mavenproject4/presupuesto.jsp"><span class="fas fa-file-invoice-dollar"></span> EGRESOS</a>
+                <a class="header-menu-tab" href="/mavenproject4/presupuesto.jsp"><span class="fas fa-file-invoice-dollar"></span> <u>EGRESOS</u></a>
             </li>
             <li>
                 <a class="header-menu-tab" href="#3">AHORRO</a>

@@ -31,120 +31,145 @@
     <body>
         <!-- MENU -->
         <header class="block">
-        <ul class="header-menu horizontal-list">
-              <li>
-                <a class="header-menu-tab" href=""><img class ="logo" src="imagenes_cuida/logomenu.png" width="310px" alt=""></a>
-            </li>
-            <li>
+            <ul class="header-menu horizontal-list">
+                <li>
+                    <a class="header-menu-tab" href=""><img class ="logo" src="imagenes_cuida/logomenu.png" width="310px" alt=""></a>
+                </li>
+                <li>
 
-            <li>
-                <a class="header-menu-tab" href="/mavenproject4/Home.jsp"><span class="fas fa-home"></span> INICIO</a>
-            </li>
-            <li>
-                <a class="header-menu-tab" href="/mavenproject4/Ingresos.jsp"><span class="fas fa-wallet"></span> INGRESOS</a>
-            </li>
-               <li>
-                <a class="header-menu-tab" href="/mavenproject4/presupuesto.jsp"><span class="fas fa-file-invoice-dollar"></span> EGRESOS</a>
-            </li>
-            <li>
-                <a class="header-menu-tab" href="#3">AHORRO</a>
-                <!--<a class="header-menu-number" href="#4">5</a>-->
-            </li>
-            <li>
-                <a class="header-menu-tab" href="#5">METAS</a>
-            </li>
-            <li>
-                <a class="header-menu-tab" href="#5">CONFIGURACIÓN</a>
-            </li>
-        </ul>
-        <div class="profile-menu">
-            <p>USUARIO <a href="#26"></a></p>
-            <div class="profile-picture small-profile-picture">
-                <img width="40px" alt="img usuario" src="imagenes_cuida/logoprot.png">
+                <li>
+                    <a class="header-menu-tab" href="/mavenproject4/Home.jsp"><span class="fas fa-home"></span> <u>INICIO</u></a>
+                </li>
+                <li>
+                    <a class="header-menu-tab" href="/mavenproject4/Ingresos.jsp"><span class="fas fa-wallet"></span> INGRESOS</a>
+                </li>
+                <li>
+                    <a class="header-menu-tab" href="/mavenproject4/presupuesto.jsp"><span class="fas fa-file-invoice-dollar"></span> EGRESOS</a>
+                </li>
+                <li>
+                    <a class="header-menu-tab" href="#3">AHORRO</a>
+                    <!--<a class="header-menu-number" href="#4">5</a>-->
+                </li>
+                <li>
+                    <a class="header-menu-tab" href="#5">METAS</a>
+                </li>
+                <li>
+                    <a class="header-menu-tab" href="#5">CONFIGURACIÓN</a>
+                </li>
+            </ul>
+            <div class="profile-menu">
+                <p>USUARIO <a href="#26"></a></p>
+                <div class="profile-picture small-profile-picture">
+                    <img width="40px" alt="img usuario" src="imagenes_cuida/logoprot.png">
+                </div>
             </div>
-        </div>
-    </header>
+        </header>
 
         <br>
+        <!-- Informacion Usuario -->
+        <div class="d-flex">
 
-        <!--TABLE EGRESOS -->            
-        <div class="col-sm-7 ml-auto" >
-            <div class="card">
-                <div class="card-body">
-                    <!-- Titulo contenedor-->
-                    <div class="d-flex col-sm-5">
-                        <h1 style="color:#1f253d"><i class="fas fa-tasks"></i> Listado de Ingresos</h1>
-                    </div>
-                    <hr style="color: #0056b2;" />
-                    <!-- Sección de filtro-->                                    
-                     <form method="GET" action = "Home.jsp">
-                        <div class="form-group d-flex">
-                            <div class="mb-3 col-sm-6 d-flex">
-                                <label for="lblFechaFiltro" class="col-form-label col-sm-2">De </label>
-                                <input type="date" class="form-control col-sm-7" id="txtFechaDesde" name="txtFechaDesde" >
-                                <label for="lblFehaFiltro" class="col-form-label col-sm-2"> A </label>
-                                <input type="date" class="form-control col-sm-7" id="txtFechaHasta" name="txtFechaHasta" >
-                                <label for="lblFehaFiltro" class="col-form-label col-sm-1"></label>
-                                <button type="button" id="btnFiltroIngreso" class="btn btn-success"><i class="fas fa-search"></i></button>
-                            </div> 
+            <div class="col-sm-5" >
+                <div class="row-ms-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <!-- Titulo contenedor-->
+                            <div class="d-flex col-sm-10">
+                                <h1 style="color:#1f253d"><i class="fas fa-user-astronaut"></i> Pepe Bocadillo</h1>
+                            </div>
+                            <hr style="color: #0056b2;" />
+                           
+
                         </div>
-                    </form> 
-                    <!-- Tabla para mostrar los registros de Ingresos-->
-                    <table class="table table-hover">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Tipo</th>
-                                <th>Categoria</th>
-                                <th>Fecha</th>
-                                <th>Descripción</th>
-                                <th>Valor</th>
-                                <!--<th>Acciones</th>-->                    
-                            </tr>
-                        </thead>
-                        <%  DecimalFormat df = new DecimalFormat("#,##0.00", new DecimalFormatSymbols(new Locale("pt", "BR")));
-                            ColeccionIngreso ingres = new ColeccionIngreso();
-                            boolean isDate = ingres.cargarIngreso();
-                            Double sumTotalIngreso = 0.0;
-                            sumTotalIngreso = ingres.totalIngreso();
-                        %>
-                        <tbody>
-                            <% if (isDate) { %>
-                            <% for (Ingreso spend : ingres.getLista()) {%>
-                            <tr>
-                            <tr>
-                                <td scope="row"><%= spend.getId()%></td>
-                                <td class=""><%= spend.getTipoIngreso()%></td>
-                                <td><%= ingres.getCategoriaIngreso(spend.getIdCategoriaIngreso())%></td>
-                                <td><%= spend.getFechaIngreso()%></td>
-                                <td><%= spend.getDescripcion()%></td>
-                                <td>$<%= df.format(spend.getValorIngreso())%></td>
-                                <!--<td class="d-flex">
-                                    <button type="button" class="btn btn-success"><i class="fas fa-pencil-alt"></i></button>
-                                    <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
-                                </td>-->
-                            </tr>
-                            <% } %>
-                            <% } else { %>
-                            <tr>
-                                <td colspan="5">No hay datos</td>
-                            </tr>
-                            <% }%>
-                            </tr>
-                        </tbody>
-                    </table>
+                    </div>
                 </div>
-                <!-- Pie de pagina del contenedor-->
-                <div class="card-footer d-flex">
-                    <!-- Total de Egresos-->
-                    <div class="col-sm-3 ml-auto">
-                        <label style="font-size:16px">TOTAL INGRESOS</label>
-                        <input type="text" id="txtTotalIngresos" name="txtTotalIngresos" class="form-control font-weight-bold" value="$<%= df.format(sumTotalIngreso)%>"  readonly>
+            </div>
+
+
+
+
+            <!--TABLE INGRESOS -->            
+            <div class="col-sm-7 ml-auto" >
+                <div class="card">
+                    <div class="card-body">
+                        <!-- Titulo contenedor-->
+                        <div class="d-flex col-sm-5">
+                            <h1 style="color:#1f253d"><i class="fas fa-tasks"></i> Listado de Ingresos</h1>
+                        </div>
+                        <hr style="color: #0056b2;" />
+                        <!-- Sección de filtro-->                                    
+                        <form method="GET" action = "Home.jsp">
+                            <div class="form-group d-flex">
+                                <div class="mb-3 col-sm-6 d-flex">
+                                    <label for="lblFechaFiltro" class="col-form-label col-sm-2">De </label>
+                                    <input type="date" class="form-control col-sm-7" id="txtFechaDesde" name="txtFechaDesde" >
+                                    <label for="lblFehaFiltro" class="col-form-label col-sm-2"> A </label>
+                                    <input type="date" class="form-control col-sm-7" id="txtFechaHasta" name="txtFechaHasta" >
+                                    <label for="lblFehaFiltro" class="col-form-label col-sm-1"></label>
+                                    <button type="button" id="btnFiltroIngreso" class="btn btn-success"><i class="fas fa-search"></i></button>
+                                </div> 
+                            </div>
+                        </form> 
+                        <!-- Tabla para mostrar los registros de Ingresos-->
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Tipo</th>
+                                    <th>Categoria</th>
+                                    <th>Fecha</th>
+                                    <th>Descripción</th>
+                                    <th>Valor</th>
+                                    <!--<th>Acciones</th>-->                    
+                                </tr>
+                            </thead>
+                            <%  DecimalFormat df = new DecimalFormat("#,##0.00", new DecimalFormatSymbols(new Locale("pt", "BR")));
+                                ColeccionIngreso ingres = new ColeccionIngreso();
+                                boolean isDate = ingres.cargarIngreso();
+                                Double sumTotalIngreso = 0.0;
+                                sumTotalIngreso = ingres.totalIngreso();
+                            %>
+                            <tbody>
+                                <% if (isDate) { %>
+                                <% for (Ingreso spend : ingres.getLista()) {%>
+                                <tr>
+                                <tr>
+                                    <td scope="row"><%= spend.getId()%></td>
+                                    <td class=""><%= spend.getTipoIngreso()%></td>
+                                    <td><%= ingres.getCategoriaIngreso(spend.getIdCategoriaIngreso())%></td>
+                                    <td><%= spend.getFechaIngreso()%></td>
+                                    <td><%= spend.getDescripcion()%></td>
+                                    <td>$<%= df.format(spend.getValorIngreso())%></td>
+                                    <!--<td class="d-flex">
+                                        <button type="button" class="btn btn-success"><i class="fas fa-pencil-alt"></i></button>
+                                        <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+                                    </td>-->
+                                </tr>
+                                <% } %>
+                                <% } else { %>
+                                <tr>
+                                    <td colspan="5">No hay datos</td>
+                                </tr>
+                                <% }%>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- Pie de pagina del contenedor-->
+                    <div class="card-footer d-flex">
+
+
+                        <!-- Total de Ingresos-->
+                        <div class="col-sm-3 ml-auto">
+                            <label style="font-size:16px">TOTAL INGRESOS</label>
+                            <input type="text" id="txtTotalIngresos" name="txtTotalIngresos" class="form-control font-weight-bold" value="$<%= df.format(sumTotalIngreso)%>"  readonly>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
         <br>
+
         <!--TABLE EGRESOS -->
 
         <div class="col-sm-7 ml-auto" >
@@ -156,7 +181,7 @@
                     </div>
                     <hr style="color: #0056b2;" />
                     <!-- Sección de filtro-->                                    
-                   <form method="GET" action = "Home.jsp">
+                    <form method="GET" action = "Home.jsp">
                         <div class="form-group d-flex">
                             <div class="mb-3 col-sm-6 d-flex">
                                 <label for="lblFechaFiltro" class="col-form-label col-sm-2">De </label>
@@ -198,10 +223,10 @@
                                 <td><%= spend.getFechaEgreso()%></td>
                                 <td><%= spend.getDescripcion()%></td>
                                 <td>$<%= dfe.format(spend.getValorEgreso())%></td>
-                               <!-- <td class="d-flex">
-                                    <button type="button" class="btn btn-success"><i class="fas fa-pencil-alt"></i></button>
-                                    <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
-                                </td>-->
+                                <!-- <td class="d-flex">
+                                     <button type="button" class="btn btn-success"><i class="fas fa-pencil-alt"></i></button>
+                                     <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+                                 </td>-->
                             </tr>
                             <% } %>
                             <% } else { %>
@@ -222,28 +247,27 @@
 
                     </div>
                 </div>
-          </div>
-                        <br>
-                 
-                
+            </div>
+            <br>
 
-                <div class="card">
-                    <div class="card-body">
-                        <!-- Titulo contenedor-->
-                        <div class="d-flex col-sm-5">
-                            <h1 style="color:#1f253d"><i class="fas fa-money-check-alt"></i> Dinero Disponible </h1>
-                        </div>
-                        <hr style="color: #0056b2;" />
 
-                        <table class="table" table-hover >
-                            <input type="text" id="txtDiferencia" name="txtDiferencia" class="form-control font-weight-bold" value="$<%= df.format(sumTotalIngreso - sumTotalEgreso)%>"  readonly>
-                            </div>
-                            <td>
-                        </table>
+
+            <div class="card">
+                <div class="card-body">
+                    <!-- Titulo contenedor-->
+                    <div class="d-flex col-sm-5">
+                        <h1 style="color:#1f253d"><i class="fas fa-money-check-alt"></i> Dinero Disponible </h1>
                     </div>
+                    <hr style="color: #0056b2;" />
+
+                    <table class="table" table-hover >
+                        <input type="text" id="txtDiferencia" name="txtDiferencia" class="form-control font-weight-bold" value="$<%= df.format(sumTotalIngreso - sumTotalEgreso)%>"  readonly>
+                        </div>
+                        <td>
+                    </table>
                 </div>
-               </div>                
-        
+            </div>
+        </div>                
 
 
 
@@ -251,5 +275,6 @@
 
 
 
-                </body>
-                </html>
+
+    </body>
+</html>
