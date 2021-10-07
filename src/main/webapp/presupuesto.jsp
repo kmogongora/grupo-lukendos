@@ -32,9 +32,13 @@
 <body>
     <header class="block">
         <ul class="header-menu horizontal-list">
+              <li>
+                <a class="header-menu-tab" href=""><img class ="logo" src="imagenes_cuida/logomenu.png" width="310px" alt=""></a>
+            </li>
+            <li>
 
             <li>
-                <a class="header-menu-tab" href="/mavenproject4/Home.jsp"><span class="fas fa-home"></span>INICIO</a>
+                <a class="header-menu-tab" href="/mavenproject4/Home.jsp"><span class="fas fa-home"></span> INICIO</a>
             </li>
             <li>
                 <a class="header-menu-tab" href="/mavenproject4/Ingresos.jsp">INGRESOS</a>
@@ -43,14 +47,14 @@
                 <a class="header-menu-tab" href="/mavenproject4/presupuesto.jsp">EGRESOS</a>
             </li>
             <li>
-                <a class="header-menu-tab" href="#3"><span class="fas fa-piggy-bank"></span> AHORRO</a>
-                <a class="header-menu-number" href="#4">5</a>
+                <a class="header-menu-tab" href="#3">AHORRO</a>
+                <!--<a class="header-menu-number" href="#4">5</a>-->
             </li>
             <li>
-                <a class="header-menu-tab" href="#5"><span class="fas fa-bullseye"></span> METAS</a>
+                <a class="header-menu-tab" href="#5">METAS</a>
             </li>
             <li>
-                <a class="header-menu-tab" href="#5"><span class="fas fa-user-cog"></span> CONFIGURACIÓN</a>
+                <a class="header-menu-tab" href="#5">CONFIGURACIÓN</a>
             </li>
         </ul>
         <div class="profile-menu">
@@ -60,6 +64,7 @@
             </div>
         </div>
     </header>
+
     
    
     <!-- SECCIÓN DE EGRESOS-->
