@@ -33,10 +33,10 @@
                 <a class="header-menu-tab" href="/mavenproject4/Home.jsp"><span class="fas fa-home"></span>INICIO</a>
             </li>
             <li>
-                <a class="header-menu-tab" href="/mavenproject4/Ingresos.jsp">INGRESOS</a>
+                <a class="header-menu-tab" href="/mavenproject4/Ingresos.jsp"><span class="fas fa-wallet"></span> INGRESOS</a>
             </li>
                <li>
-                <a class="header-menu-tab" href="/mavenproject4/presupuesto.jsp">EGRESOS</a>
+                <a class="header-menu-tab" href="/mavenproject4/presupuesto.jsp"><span class="fas fa-file-invoice-dollar"></span> EGRESOS</a>
             </li>
             <li>
                 <a class="header-menu-tab" href="#3">AHORRO</a>
@@ -84,18 +84,18 @@
                         <div class="card-body">
                             <!-- Titulo de la sección de registro de Ingresos-->
                             <div class="form-group">
-                                <h1 for="txtTituloIngresos" style="color:#1f253d"><i class="fas fa-money-bill-wave fa-xs"></i>Registro de Ingresos</h1>
+                                <h1 for="txtTituloIngresos" style="color:#1f253d"><i class="fas fa-money-bill-wave fa-xs"></i> Registro de Ingresos</h1>
                             </div>
 
                             <hr style="color: #0056b2;" />
                             <!-- ID del Ingreso-->
                                 <div class="row mb-3">
-                                    <label for="txtId" class="col-form-label col-sm-5 ">ID</label>
+                                    <label for="txtId" class="col-form-label col-sm-5 "><i class="fas fa-barcode"></i> Codigo de Ingreso</label>
                                     <input type="text" class="form-control col-sm-6" id="txtId" name="txtId" value="<%= id %>" readonly>
                                 </div>
                             <!-- Tipo de Ingresos-->                     
                             <div class="row mb-3">
-                                <label for="txtTipoIngreso" class="col-form-label col-sm-5 ">* Tipo de Ingreso</label>
+                                <label for="txtTipoIngreso" class="col-form-label col-sm-5 "><i class="fas fa-thumbtack"></i> Tipo de Ingreso</label>
                                     <div class="form-check col-sm-2 mt-2">
                                         <input class="form-check-input" type="radio" name="radTipoIngreso" id="radDisponibilidad1" value="Fijo" <%= tipoIngreso.equals("Fijo") ? "checked" : "" %>>
                                         <label class="form-check-label" for="radTipoIngreso1">Fijo</label>
@@ -107,7 +107,7 @@
                             </div>
                             <!-- Categoria de los Ingresos-->
                             <div class="row mb-3">
-                                <label for="selCategoriaIngreso" class="col-form-label col-sm-5">* Categoria</label>
+                                <label for="selCategoriaIngreso" class="col-form-label col-sm-5"><i class="fas fa-list-ol"></i> Categoria</label>
                                 <%ColeccionIngreso colection = new ColeccionIngreso();
                                 TreeMap<Integer, String> Categoria = colection.getCategoriaIngresos();
                                 %>
@@ -120,17 +120,17 @@
                             </div>
                             <!-- Fecha del registro del Ingreso-->
                             <div class="row mb-3">
-                                <label for="dtpFechaIngreso" class="col-form-label col-sm-5">* Fecha del Ingreso</label>
+                                <label for="dtpFechaIngreso" class="col-form-label col-sm-5"><i class="far fa-calendar-alt"></i> Fecha del Ingreso</label>
                                 <input type="date" class="form-control col-sm-6" id="dtpFechaIngreso" name="dtpFechaIngreso" value="<%= fechaIngreso %>">
                             </div>
                             <!-- Valor del Ingreso-->
                             <div class="row mb-3">
-                                <label for="txtValorIngreso" class="col-form-label col-sm-5 ">* Valor</label>
-                                <input type="text" class="form-control col-sm-6" id="txtValorIngreso" name="txtValorIngreso" value="$<%= valorIngreso %>" placeholder="Valor">
+                                <label for="txtValorIngreso" class="col-form-label col-sm-5 "><i class="fas fa-dollar-sign"></i> Valor</label>
+                                <input type="text" class="form-control col-sm-6" id="txtValorIngreso" name="txtValorIngreso" value="<%= valorIngreso %>" placeholder="Valor">
                             </div>   
                             <!-- Descripción-->
                             <div class="row mb-3">
-                                <label for="txtDescripcion" class="col-form-label col-sm-5 ">Descripción</label>
+                                <label for="txtDescripcion" class="col-form-label col-sm-5 "><i class="fas fa-microphone"></i> Descripción</label>
                                 <input type="text" class="form-control col-sm-6" id="txtDescripcion" name="txtDescripcion" value="<%= descripcion %>"  placeholder="Descripción breve">
                             </div>
 
@@ -150,18 +150,22 @@
                     <div class="card-body">
                         <!-- Titulo contenedor-->
                         <div class="d-flex col-sm-5">
-                            <h1 style="color:#1f253d">Listado de Ingresos</h1>
+                            <h1 style="color:#1f253d"><i class="fas fa-tasks"></i> Listado de Ingresos</h1>
                         </div>
                         <hr style="color: #0056b2;" />
                         <!-- Sección de filtro-->                                    
-                        <div class="form-group d-flex">
-                            <div class="mb-3 col-sm-6 d-flex">
-                                <label for="txtFehsFiltro" class="col-form-label col-sm-5">Fechas</label>
-                                <input type="date" class="form-control col-sm-7" id="dtpFechaInicioEgreso" name="dtpFechaInicioIngreso" >
-                                <input type="date" class="form-control col-sm-7" id="dtpFechaFinEgreso" name="dtpFechaFinIngreso" >
-                                <input type="submit" name="accion" value="Filtrar" class="btn btn-success">
-                            </div> 
-                        </div>
+                        <form method="GET" action = "Ingreso.jsp">
+                            <div class="form-group d-flex">
+                                <div class="mb-3 col-sm-6 d-flex">
+                                    <label for="lblFechaFiltro" class="col-form-label col-sm-2">De </label>
+                                    <input type="date" class="form-control col-sm-7" id="txtFechaDesde" name="txtFechaDesde" >
+                                    <label for="lblFehaFiltro" class="col-form-label col-sm-2"> A </label>
+                                    <input type="date" class="form-control col-sm-7" id="txtFechaHasta" name="txtFechaHasta" >
+                                    <label for="lblFehaFiltro" class="col-form-label col-sm-1"></label>
+                                    <button type="button" id="btnFiltroIngreso" class="btn btn-success"><i class="fas fa-search"></i></button>
+                                </div> 
+                            </div>
+                        </form> 
                         <!-- Tabla para mostrar los registros de Ingresos-->
                         <table class="table table-hover">
                             <thead>
@@ -212,7 +216,7 @@
                         <!-- Total de Egresos-->
                         <div class="col-sm-3 ml-auto">
                             <label style="font-size:16px">TOTAL INGRESOS</label>
-                            <input type="text" id="txtTotalIngresos" name="txtTotalIngresos" class="form-control" value="$<%= df.format(sumTotalIngreso) %>"  readonly>
+                            <input type="text" id="txtTotalIngresos" name="txtTotalIngresos" class="form-control font-weight-bold" value="$<%= df.format(sumTotalIngreso) %>"  readonly>
                         </div>
                     </div>
                 </div>

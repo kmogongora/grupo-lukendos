@@ -34,13 +34,13 @@
         <ul class="header-menu horizontal-list">
 
             <li>
-                <a class="header-menu-tab" href="/mavenproject4/Home.jsp"><span class="fas fa-home"></span>INICIO</a>
+                <a class="header-menu-tab" href="/mavenproject4/Home.jsp"><span class="fas fa-home"></span> INICIO</a>
             </li>
             <li>
-                <a class="header-menu-tab" href="/mavenproject4/Ingresos.jsp">INGRESOS</a>
+                <a class="header-menu-tab" href="/mavenproject4/Ingresos.jsp"><span class="fas fa-wallet"></span> INGRESOS</a>
             </li>
                <li>
-                <a class="header-menu-tab" href="/mavenproject4/presupuesto.jsp">EGRESOS</a>
+                <a class="header-menu-tab" href="/mavenproject4/presupuesto.jsp"><span class="fas fa-file-invoice-dollar"></span> EGRESOS</a>
             </li>
             <li>
                 <a class="header-menu-tab" href="#3"><span class="fas fa-piggy-bank"></span> AHORRO</a>
@@ -106,7 +106,7 @@
                         <hr style="color: #0056b2;" />
                         <!-- ID del Egreso-->
                         <div class="row mb-3">
-                            <label for="txtId" class="col-form-label col-sm-5 "><i class="fas fa-barcode"></i> Codigo de Registro</label>
+                            <label for="txtId" class="col-form-label col-sm-5 "><i class="fas fa-barcode"></i> Codigo de Egreso</label>
                             <input type="text" class="form-control col-sm-6" id="txtId" name="txtId" value="<%= id %>" readonly>
                         </div>
                         <!-- Tipo de Egresos-->                     
@@ -169,10 +169,10 @@
                     <div class="d-flex col-sm-5">
                         <h1 style="color:#1f253d"><i class="far fa-list-alt"></i> Listado de Egresos</h1>
                     </div>
-                <%
-                    String filtroFechaDesde =  request.getParameter("dtpFechaDesde");
-                    String filtroFechaHasta =  request.getParameter("dtpFechaHasta");
-                %>
+                    <%
+                        String fecha1 = (request.getParameter("dtpFechaDesde") == null) ? "" : request.getParameter("dtpFechaDesde");
+                        String fecha2 = (request.getParameter("dtpFechaHasta") == null) ? "" : request.getParameter("dtpFechaHasta");
+                    %>
                     <hr style="color: #0056b2;" />
                     <!-- Sección de filtro-->
                     <form method="GET" action = "presupuesto.jsp">
@@ -186,6 +186,8 @@
                                 <button type="button" class="btn btn-success"><i class="fas fa-search"></i></button>
                             </div> 
                         </div>
+                    </form> 
+                        
                         <!-- Tabla para mostrar los registros de Egresos-->
                         <table class="table table-hover">
                             <thead>
@@ -201,7 +203,13 @@
                             </thead>
                             <%  DecimalFormat df = new DecimalFormat( "#,##0.00", new DecimalFormatSymbols(new Locale("pt", "BR")));
                                 ColeccionEgreso egres = new ColeccionEgreso();
-                                boolean isDate = egres.cargarEgreso();
+                                boolean isDate;
+                                if (fecha1.equals("") && fecha2.equals("")){
+                                    isDate = egres.cargarEgreso();
+                                }
+                                else{
+                                    isDate = egres.cargarGastosPorFiltro(fecha1, fecha2);
+                                }                     
                                 Double sumTotalEgreso = 0.0;
                                 sumTotalEgreso = egres.totalEgreso();
                             %>
@@ -217,8 +225,8 @@
                                         <td><%= spend.getDescripcion()%></td>
                                         <td>$<%= df.format(spend.getValorEgreso()) %></td>
                                         <td class="d-flex">
-                                            <button type="button" class="btn btn-success"><i class="fas fa-pencil-alt"></i></button>
-                                            <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+                                            <a href="presupuesto.jsp?accion=editar&id=<%= spend.getId()%>"><button type="button" class="btn btn-success"><i class="fas fa-pencil-alt"></i></button></a>
+                                            <a href="eliminacionEgreso.jsp?id=<%= spend.getId()%>"><button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button></a>
                                         </td>
                                     </tr>
                                     <% } %>
@@ -236,7 +244,7 @@
                         <!-- Total de Egresos-->
                         <div class="col-sm-3 ml-auto">
                             <label style="font-size:16px">TOTAL EGRESOS</label>
-                            <input type="text" id="txtTotalEgresos" name="txtTotalEgresos" class="form-control" value="$<%= df.format(sumTotalEgreso) %>"  readonly>
+                            <input type="text" id="txtTotalEgresos" name="txtTotalEgresos" class="form-control font-weight-bold" value="$<%= df.format(sumTotalEgreso) %>"  readonly>
                         </div>
                     </div>
                 </div>

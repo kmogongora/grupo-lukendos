@@ -1,7 +1,7 @@
 <%-- 
     Document   : eliminaconEgreso
     Created on : 29/09/2021, 5:25:46 p. m.
-    Author     : Carolina
+    Author     : Carolina Bernal
 --%>
 <%@page import="persistencia.EgresoDAO"%>
 <%@page import="logica.Egreso"%>
