@@ -36,7 +36,7 @@
             ColeccionIngreso colection = new ColeccionIngreso();
             boolean guardado = colection.guardarNuevoIngreso(spend);
             if (guardado == true) {
-                response.sendRedirect("presupuesto.jsp");
+                response.sendRedirect("Ingresos.jsp");
             }
             else {
                 out.println("Información de Egreso no se guardó.");
