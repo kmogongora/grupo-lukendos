@@ -30,7 +30,7 @@
           <!-- creacion formulario  -->
          
             <div class="login-form">
-              <form method="post" action="login_crt.jsp">
+              <form method="post" action="Iniciar">
                 <div class="sign-in-htm">
                     <!-- Usuario  -->
                     <div class="group">
@@ -56,7 +56,7 @@
                     <div class="hr"></div>
                     <!--  olvidaste tu ContraseÃ±a  -->
                     <div class="foot-lnk">     
-                        <a href="#forgot">OLVIDASTE TU ClAVE DE ACCESO?</a>   
+                        <a href="#forgot">¿OLVIDASTE TU ClAVE DE ACCESO?</a>   
                     </div>
                 </div>
                </form>
