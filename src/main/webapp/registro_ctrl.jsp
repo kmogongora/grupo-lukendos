@@ -10,7 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous"></script>
     </head>
     <body>
         <%
@@ -26,20 +26,26 @@
             String estado = "Activo";
             int rol = 3;
             String accion = request.getParameter("btnSubmit");
-            
-            if (accion.equals("nuevo")){
+
+            if (accion.equals("nuevo")) {
                 Usuario user = new Usuario(documento, nombre, apellido, fechaNacimiento, idGenero, email, usuario, clave, estado, rol);
                 ColeccionRegistro coleccion = new ColeccionRegistro();
 
                 boolean guardado = coleccion.guardarUsuario(user);
                 if (guardado == true) {
-                    out.println("usuario registrado exitosamente");
-                    }
-                else {
-                    out.println("Informacion de usuario no se guardo");
+        %>
+        <div class="alert alert-success" role = "alert"> 
+            A simple success alert—check it out! 
+        </div> 
+        <%
+                    
+                    response.sendRedirect("Home.jsp");
+
+                } else {
+                    out.println("Informacion de usuario no se guardo, intentalo de nuevo o contacta a servicio tecnico");
                 }
             }
         %>
-        <a href="usuarios_lista.jsp"><button type="submit" class="btn btn-primary" id="btnSubmit">Volver a la lista</button></a>
+
     </body>
 </html>

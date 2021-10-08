@@ -12,10 +12,10 @@ import java.sql.Statement;
 public class ConexionBD {
     //Atributos
     private String conectorInstalado = "jdbc:mysql:"; //Conector o driver que se instalo para la conexion
-    private String host = "localhost:3306"; //Puerto de conexion
+    private String host = "localhost:8890"; //Puerto de conexion
     private String baseDatos = "cuentomislukas"; //Variable que almacena el nombre de la Base de datos para este caso se nombro "cuentomislukas"
     private String username = "root"; //Variable que almacena el nombre de usuario de acceso a la base de datos
-    private String password = "Mqt56783@Xyz"; // Variable que almacena la clave de acceso en este caso se dejo vacio 
+    private String password = "root"; // Variable que almacena la clave de acceso en este caso se dejo vacio 
     private Connection conexion;//Variable de tipo Connection
     private Statement ejecutor; // Ejecutor de las sentencias SQL
     

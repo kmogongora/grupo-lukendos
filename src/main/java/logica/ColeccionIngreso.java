@@ -67,7 +67,16 @@ public class ColeccionIngreso {
             return false;
         }
     }
-    
+    public boolean eliminarIngresoExistente(int id){
+        IngresoDAO dao = new IngresoDAO();
+        int filas = dao.eliminarIngreso(id);
+            
+        if (filas == 1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
         /**
      * Carga la información del gasto total de un usuario de la base de datos
      * @return true si carga gasto, o false si no se logró cargar
