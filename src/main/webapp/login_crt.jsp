@@ -20,11 +20,11 @@
             boolean existe = coleccionRegistro.login(nombre, pass);
             if (existe) {
             }else  
-            response.sendRedirect(""); 
-                %>
+            response.sendRedirect("Usuario y contraseña inválidos"); 
+        %>
                 <h1>funciono el login</h1>
-                <%
-            }
+        <%
+            
         %>
     </body>
 </html>
