@@ -115,16 +115,13 @@
                                 <label for="txtPassword" class="label">Clave de Acceso</label>
                                 <input id="txtPassword" name="txtPassword" type="password" class="input" data-type="password" required>
                             </div>
-                            <!-- boton inscribirse  -->
+                            <!-- boton inscribirse  -->                       
                             <div class="group">
                                 <input type="submit" class="button" id="btnSubmit" onclick="login()" name="btnSubmit" value="REGISTRAR NUEVO USUARIO">
                                 <br>
-                            <div class="foot-lnk">     
+                            <div class="foot-lnk"> 
                                     <a href="index.jsp">¿YA ESTAS REGISTRADO?</a>   
-                                </div>
-
-
-
+                            </div>
 
                             </div>
                     </form>    

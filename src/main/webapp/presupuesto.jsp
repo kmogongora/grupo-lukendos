@@ -47,14 +47,14 @@
                 <a class="header-menu-tab" href="/mavenproject4/presupuesto.jsp"><span class="fas fa-file-invoice-dollar"></span> <u>EGRESOS</u></a>
             </li>
             <li>
-                <a class="header-menu-tab" href="#3">AHORRO</a>
+                <a class="header-menu-tab" href="#3"><span class="fas fa-piggy-bank"></span> AHORRO</a>
                 <!--<a class="header-menu-number" href="#4">5</a>-->
             </li>
             <li>
-                <a class="header-menu-tab" href="#5">METAS</a>
+                <a class="header-menu-tab" href="#5"><span class="fas fa-bullseye"></span> METAS</a>
             </li>
             <li>
-                <a class="header-menu-tab" href="#5">CONFIGURACIÓN</a>
+                <a class="header-menu-tab" href="#5"><span class="fas fa-user-cog"></span> CONFIGURACIÓN</a>
             </li>
         </ul>
         <div class="profile-menu">
@@ -62,6 +62,7 @@
             <div class="profile-picture small-profile-picture">
                 <img width="40px" alt="img usuario" src="imagenes_cuida/logoprot.png">
             </div>
+            <p><a href="index.jsp">Salir</a></p>
         </div>
     </header>
 
