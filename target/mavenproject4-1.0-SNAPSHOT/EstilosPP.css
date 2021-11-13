@@ -1,5 +1,7 @@
 body {
-	background: #1f253d;
+	background: url(/mavenproject4/imagenes_cuida/Fondo.jpg);
+     
+      
 	font:600 16px/18px 'Open Sans',sans-serif;
 }
 
@@ -9,32 +11,16 @@ ul {
 	padding-left: 0;
 }
 
-h1 {
-	font-size: 23px;
-}
-
-h2 {
-	font-size: 17px;
-}
-
-p {
-	font-size: 15px;
-}
-
-a {
-	text-decoration: none;
-	font-size: 15px;
-}
-	a:hover {
-		text-decoration: underline;
-	}
-
 h1, h2, p, a{
+	text-decoration:none;
 	color: #fff;
+    border-color: #11afee;
+	font-size: 22px;
+   
+    margin: 0 15px 10px 0;
+    display: inline-block;
+    border-bottom: 2px solid transparent;
 }
-	.scnd-font-color {
-		color: #9099b7;
-	}
 
 .input-container {
 	position: relative;
@@ -55,7 +41,7 @@ h1, h2, p, a{
 }
 
 .icon {
-	font-size: 25px;
+	font-size: 29px;
 }
 
 
@@ -103,6 +89,7 @@ h1, h2, p, a{
 		border: 5px solid #50597b;
 		width: 150px;
 		height: 150px;
+		align-content: center;
 	}
 	.small-profile-picture {
 		border: 2px solid #50597b;
@@ -124,7 +111,7 @@ h1, h2, p, a{
 		height: 80px;
 	}
 		.header-menu {
-			font-size: 17px;
+			font-size: 15px;
 			line-height: 80px;
 		}
 			.header-menu li {
@@ -132,39 +119,39 @@ h1, h2, p, a{
         		-webkit-transform: translateZ(0); /** To avoid a flash when hover messages **/
 			}
 				.header-menu-tab {
-					padding: 0 27px;
+					padding: 0 15px;
 					display: block;
 					line-height: 74px;
-					font-size: 17px;
+					font-size: 15px;
 					-webkit-transition: background .3s;
 					transition: background .3s;
 				}
-					.header-menu-tab:hover {
-						background: #50597b;
-						border-bottom: 4px solid #11a8ab;
-						text-decoration: none;
-					}
+					
 					.header-menu-tab .icon {
 						padding-right: 15px;
+					}
+
+					.header-menu-tab:checked {
+						
+						border-bottom: 4px solid #11a8ab;
+						text-decoration: none;
+						font-size:#ffff;
 					}
 				.header-menu-number {
 					position: absolute;
 					line-height: 22px;
 					padding: 0 6px;
 					font-weight: 700;
-					background: #e64c65;
+					background: #26d4cc;
 					border-radius: 100%;
 					top: 15px;
 					right: 2px;
 					-webkit-transition: all .3s linear;
 					transition: all .3s linear;
 				}
-					.header-menu li:hover .header-menu-number {
-						text-decoration: none;
-						-webkit-transform: rotate(360deg);
-						transform: rotate(360deg);
+					
 
-					}
+					
 		.profile-menu {
 			float: right;
 			height: 80px;
@@ -178,11 +165,9 @@ h1, h2, p, a{
 				padding-right: 10px;
 			}
 				.profile-menu a {
-					padding-left: 5px;
+					padding-left: 10px;
 				}
-					.profile-menu a:hover {
-						text-decoration: none;
-					}
+					
 			.small-profile-picture {
 				display: inline-block;
 				vertical-align: middle;				
@@ -193,7 +178,7 @@ h1, h2, p, a{
 		width: 300px;
 	}
 		.block {
-			margin-bottom: 25px;
-			background: #394264;
-			border-radius: 5px;
+			margin-bottom: 16px;
+			background: rgba(75, 171, 200, 0.9);
+			border-radius: 0px;
 		}

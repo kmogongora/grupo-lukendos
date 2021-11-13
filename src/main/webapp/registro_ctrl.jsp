@@ -30,7 +30,6 @@
             if (accion.equals("nuevo")) {
                 Usuario user = new Usuario(documento, nombre, apellido, fechaNacimiento, idGenero, email, usuario, clave, estado, rol);
                 ColeccionRegistro coleccion = new ColeccionRegistro();
-
                 boolean guardado = coleccion.guardarUsuario(user);
                 if (guardado == true) {
         %>
@@ -40,12 +39,10 @@
         <%
                     
                     response.sendRedirect("Home.jsp");
-
                 } else {
                     out.println("Informacion de usuario no se guardo, intentalo de nuevo o contacta a servicio tecnico");
                 }
             }
         %>
-
     </body>
 </html>

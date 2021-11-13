@@ -30,7 +30,7 @@
                 <!-- creacion formulario  -->
 
                 <div class="login-form">
-                    <form method="post" action="Iniciar">
+                    <form method="post" action="validarctr.jsp">
                         <div class="sign-in-htm">
                             <!-- Usuario  -->
                             <div class="group">
@@ -47,9 +47,10 @@
                                 <input id="check" name="check" type="checkbox" class="check" checked>
                                 <label for="check"><span class="icon"></span> Mantenerme registrado</label>
                             </div>
-                            <!--  boton ingresar  -->
+                             <!--  boton ingresar  -->
                             <div class="group">
-                                <input type="submit" class="button" value="Ingresar">
+                                <button type="submit" class="button" name="accion" value="Ingresar"> Ingresar</button>
+                                <!--<input type="submit" class="button" value="Ingresar">  -->
                             </div>
                             <!-- logo -->
                             <div align="center"> <img class="logo" src="imagenes_cuida/logo.png" alt=""></div>
@@ -63,7 +64,7 @@
                     </form>
 
                     <!-- inicio tabla de REGISTRO-->
-                    <form method="post" action="registro_ctrl.jsp" >
+                    <form method="post" action="registro_ctrl.jsp">
                         <div class="sign-up-htm">
                              <!--Nombre-->
                             <div class="group">
@@ -118,7 +119,7 @@
                             <div class="group">
                                 <input type="submit" class="button" id="btnSubmit" onclick="login()" name="btnSubmit" value="REGISTRAR NUEVO USUARIO">
                                 <br>
-                                <div class="foot-lnk">     
+                            <div class="foot-lnk">     
                                     <a href="index.jsp">¿YA ESTAS REGISTRADO?</a>   
                                 </div>
 
